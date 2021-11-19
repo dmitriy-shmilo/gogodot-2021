@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_screen/entities/player_tower.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://util/state_label.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 105.689
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27.2029, 27.2994 )
+
+[node name="PlayerTower" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="RangeShape" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource( 1 )
+
+[node name="BaseSprite" type="Sprite" parent="."]
+scale = Vector2( 0.430154, 0.430154 )
+texture = ExtResource( 2 )
+
+[node name="TowerContainer" type="Node2D" parent="."]
+scale = Vector2( 0.253042, 0.253042 )
+
+[node name="TowerSprite" type="Sprite" parent="TowerContainer"]
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="Control" parent="." instance=ExtResource( 3 )]
+margin_left = -18.221
+margin_top = -35.043
+margin_right = 18.779
+margin_bottom = -21.043
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="RangeArea" to="." method="_on_RangeArea_body_entered"]
+[connection signal="body_exited" from="RangeArea" to="." method="_on_RangeArea_body_exited"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
