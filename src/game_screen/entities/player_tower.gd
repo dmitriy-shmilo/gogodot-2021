@@ -24,22 +24,36 @@ func _physics_process(_delta: float) -> void:
 		TowerState.INACTIVE, TowerState.DEAD:
 			return
 		TowerState.IDLE:
-			if _target != null:
+			if _target != null and _target.is_threat():
 				_move_to_state(TowerState.ATTACKING)
+			else:
+				_target = null
 		TowerState.ATTACKING:
 			# play animation?
-			if _target != null:
+			if _target == null or not _target.is_threat():
+				_retarget()
+			else:
 				_tower_container.look_at(_target.global_position)
 
 
 func _retarget():
 	var bodies = _range_area.get_overlapping_bodies()
-	if bodies.size() > 0:
-		_target = bodies[0]
-		_move_to_state(TowerState.ATTACKING)
-	else:
-		_target = null
-		_move_to_state(TowerState.IDLE)
+	var new_target = null
+	for body in bodies:
+		if _can_target(body):
+			new_target = body
+			break
+	
+	_attack(new_target)
+
+
+func _can_target(body: Node) -> bool:
+	return body is EnemyUnit and body.is_threat()
+
+
+func _attack(enemy: EnemyUnit) -> void:
+	_target = enemy
+	_move_to_state(TowerState.IDLE if enemy == null else TowerState.ATTACKING)
 
 func _toggle_active():
 	match _state:
@@ -75,9 +89,8 @@ func _describe_state():
 
 
 func _on_RangeArea_body_entered(body: Node) -> void:
-	if _target == null and body is EnemyUnit:
-		_target = body
-		_move_to_state(TowerState.ATTACKING)
+	if _target == null and _can_target(body):
+		_attack(body)
 
 
 func _on_RangeArea_body_exited(body: Node) -> void:
