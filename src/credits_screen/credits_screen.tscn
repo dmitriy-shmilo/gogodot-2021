@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://credits_screen/credits_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+
+[node name="CreditsScreen" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_right = 824.0
+margin_bottom = 14.0
+text = "Credits"
+align = 1
+
+[node name="CreditsText" type="RichTextLabel" parent="."]
+margin_top = 18.0
+margin_right = 824.0
+margin_bottom = 376.0
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]Thank you for playing[/center]"
+text = "Thank you for playing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 391.0
+margin_top = 380.0
+margin_right = 432.0
+margin_bottom = 400.0
+size_flags_horizontal = 4
+shortcut = ExtResource( 2 )
+text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="meta_clicked" from="CreditsText" to="." method="_on_CreditsText_meta_clicked"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

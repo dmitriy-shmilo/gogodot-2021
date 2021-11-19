@@ -1,0 +1,248 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://settings_screen/settings_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://settings_screen/key_binding_popup.gd" type="Script" id=4]
+
+[node name="Settings" type="Control"]
+anchor_left = 0.00125241
+anchor_right = 1.00125
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+margin_right = 823.0
+margin_bottom = 14.0
+text = "Settings"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 823.0
+margin_bottom = 376.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 816.0
+margin_bottom = 351.0
+
+[node name="SoundSettings" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+margin_top = 116.0
+margin_right = 801.0
+margin_bottom = 132.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
+margin_left = 281.0
+margin_right = 398.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_master_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
+margin_left = 402.0
+margin_right = 602.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+margin_top = 136.0
+margin_right = 801.0
+margin_bottom = 152.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
+margin_left = 287.0
+margin_right = 398.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_music_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
+margin_left = 402.0
+margin_right = 602.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="SfxVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+margin_top = 156.0
+margin_right = 801.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
+margin_left = 308.0
+margin_right = 398.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_sfx_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
+margin_left = 402.0
+margin_right = 602.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="SpeechVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+margin_top = 176.0
+margin_right = 801.0
+margin_bottom = 192.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume"]
+margin_left = 280.0
+margin_right = 398.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_speech_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume"]
+margin_left = 402.0
+margin_right = 602.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="KeyBindings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
+margin_left = 400.0
+margin_top = 154.0
+margin_right = 400.0
+margin_bottom = 154.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+margin_left = 390.0
+margin_top = 380.0
+margin_right = 432.0
+margin_bottom = 400.0
+size_flags_horizontal = 4
+shortcut = ExtResource( 2 )
+text = "Back"
+
+[node name="KeyBindingPopup" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -102.5
+margin_top = -58.0
+margin_right = 102.5
+margin_bottom = 58.0
+popup_exclusive = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeyBindingPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionLabel" type="Label" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 14.0
+margin_right = 197.0
+margin_bottom = 28.0
+align = 1
+
+[node name="Label" type="Label" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 32.0
+margin_right = 197.0
+margin_bottom = 46.0
+text = "Press a key..."
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 50.0
+margin_right = 197.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 74.0
+margin_right = 197.0
+margin_bottom = 94.0
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
+margin_left = 21.0
+margin_right = 75.0
+margin_bottom = 20.0
+focus_mode = 0
+text = "Cancel"
+
+[node name="ClearButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
+margin_left = 79.0
+margin_right = 175.0
+margin_bottom = 20.0
+focus_mode = 0
+text = "Clear Binding"
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume/VolumeSlider" to="." method="_on_SpeechVolumeSlider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="action_remapped" from="KeyBindingPopup" to="." method="_on_KeyBindingPopup_action_remapped"]
+[connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_KeybindingCancelButton_pressed"]
+[connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/ClearButton" to="KeyBindingPopup" method="_on_ClearButton_pressed"]

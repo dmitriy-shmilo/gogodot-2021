@@ -1,0 +1,8 @@
+key,en,ru
+ui_key_none,No Key,Нет Клавиши
+ui_sound_settings,Sound Settings,Звук
+ui_key_bindings,Key Bindings,Управление
+ui_master_volume,Master,Общий
+ui_music_volume,Music,Музыка
+ui_sfx_volume,SFX,Эффекты
+ui_speech_volume,Speech,Голос
