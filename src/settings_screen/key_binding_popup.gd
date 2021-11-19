@@ -5,7 +5,7 @@ signal action_remapped(action, event)
 export(String) var action = null
 
 
-func _unhandled_key_input(event):
+func _unhandled_key_input(event) -> void:
 	
 	if not visible \
 		or event.is_action("ui_cancel") \
@@ -17,5 +17,5 @@ func _unhandled_key_input(event):
 	emit_signal("action_remapped", action, event)
 
 
-func _on_ClearButton_pressed():
+func _on_ClearButton_pressed() -> void:
 	emit_signal("action_remapped", action, null)

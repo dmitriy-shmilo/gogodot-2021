@@ -9,7 +9,8 @@ func _ready() -> void:
 		_parent = null
 	_is_str = _parent.has_method("_describe_state")
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	if _parent != null:
 		if _is_str:
 			text = _parent._describe_state()

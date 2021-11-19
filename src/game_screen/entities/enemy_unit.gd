@@ -8,6 +8,7 @@ enum EnemyState {
 	ATTACKING,
 	DEAD
 }
+
 onready var line: Line2D = $"../Line2D"
 
 export(float) var move_speed = 100
@@ -29,9 +30,9 @@ func is_threat() -> bool:
 func _ready() -> void:
 	_points = line.points
 	_total_points = _points.size()
-	
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	match _state:
 		EnemyState.MOVING:
 			_waypoint_move()
@@ -82,5 +83,5 @@ func _move_to_state(state: int) -> void:
 		_state = state
 
 
-func _describe_state():
+func _describe_state() -> String:
 	return EnemyState.keys()[_state]

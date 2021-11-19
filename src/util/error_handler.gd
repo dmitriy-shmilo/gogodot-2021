@@ -1,7 +1,7 @@
 extends Node
 
 
-func handle(err):
+func handle(err) -> void:
 	if err == OK:
 		return
 	printerr(err)

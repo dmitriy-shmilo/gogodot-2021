@@ -12,6 +12,7 @@ export(float) var attack_rate = 1
 
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
+
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
 
@@ -36,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 				_tower_container.look_at(_target.global_position)
 
 
-func _retarget():
+func _retarget() -> void:
 	var bodies = _range_area.get_overlapping_bodies()
 	var new_target = null
 	for body in bodies:
@@ -55,7 +56,7 @@ func _attack(enemy: EnemyUnit) -> void:
 	_target = enemy
 	_move_to_state(TowerState.IDLE if enemy == null else TowerState.ATTACKING)
 
-func _toggle_active():
+func _toggle_active() -> void:
 	match _state:
 		TowerState.INACTIVE:
 			_move_to_state(TowerState.IDLE)
@@ -63,7 +64,7 @@ func _toggle_active():
 			_move_to_state(TowerState.INACTIVE)
 
 
-func _can_move_to_state(state: int):
+func _can_move_to_state(state: int) -> bool:
 	match state:
 		TowerState.IDLE:
 			return _state == TowerState.ATTACKING \
@@ -77,14 +78,15 @@ func _can_move_to_state(state: int):
 			return _state != TowerState.DEAD
 		_:
 			print("Unknown tower state %d", state)
+			return false
 
 
-func _move_to_state(state: int):
+func _move_to_state(state: int) -> void:
 	if _can_move_to_state(state):
 		_state = state
 
 
-func _describe_state():
+func _describe_state() -> String:
 	return TowerState.keys()[_state]
 
 
@@ -98,7 +100,7 @@ func _on_RangeArea_body_exited(body: Node) -> void:
 		_retarget()
 
 
-func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 		and event.button_index == BUTTON_LEFT \
 		and event.pressed:

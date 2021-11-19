@@ -17,33 +17,34 @@ var _sfx_bus_idx = -1
 var _music_bus_idx = -1
 var _speech_bus_idx = -1
 
-func _ready():
+func _ready() -> void:
 	_master_bus_idx = AudioServer.get_bus_index("Master")
 	_music_bus_idx = AudioServer.get_bus_index("Music")
 	_sfx_bus_idx = AudioServer.get_bus_index("Sfx")
 	_speech_bus_idx = AudioServer.get_bus_index("Speech")
 
 
-func set_master_volume(value: float):
+func set_master_volume(value: float) -> void:
 	master_volume = clamp(value, MIN_VOLUME, MAX_VOLUME)
 	_set_volume(_master_bus_idx, value)
 
 
-func set_sfx_volume(value: float):
+func set_sfx_volume(value: float) -> void:
 	sfx_volume = clamp(value, MIN_VOLUME, MAX_VOLUME)
 	_set_volume(_sfx_bus_idx, value)
 
 
-func set_music_volume(value: float):
+func set_music_volume(value: float) -> void:
 	music_volume = clamp(value, MIN_VOLUME, MAX_VOLUME)
 	_set_volume(_music_bus_idx, value)
 
 
-func set_speech_volume(value: float):
+func set_speech_volume(value: float) -> void:
 	speech_volume = clamp(value, MIN_VOLUME, MAX_VOLUME)
 	_set_volume(_speech_bus_idx, value)
 
-func save_settings():
+
+func save_settings() -> void:
 	var file = File.new()
 	var err = file.open(SETTINGS_FILE, File.WRITE)
 	ErrorHandler.handle(err)
@@ -51,7 +52,7 @@ func save_settings():
 	file.close()
 
 
-func load_settings():
+func load_settings() -> void:
 	var file := File.new()
 	
 	if not file.file_exists(SETTINGS_FILE):
@@ -72,7 +73,8 @@ func load_settings():
 	# TODO: validate or keep track of versions?
 	_set_from_data(data.result)
 
-func _set_volume(bus_idx: int, volume: float):
+
+func _set_volume(bus_idx: int, volume: float) -> void:
 	if volume > MIN_VOLUME:
 		AudioServer.set_bus_mute(bus_idx, false)
 		AudioServer.set_bus_volume_db(bus_idx, \
@@ -81,7 +83,7 @@ func _set_volume(bus_idx: int, volume: float):
 	AudioServer.set_bus_mute(bus_idx, true)
 
 
-func _get_data():
+func _get_data() -> Dictionary:
 	var action_map = {}
 	var actions = InputMap.get_actions()
 	for action in actions:
@@ -106,7 +108,7 @@ func _get_data():
 	}
 
 
-func _set_from_data(data: Dictionary):
+func _set_from_data(data: Dictionary) -> void:
 	master_volume = data["sound"].get("master_volume", DEFAULT_VOLUME)
 	sfx_volume = data["sound"].get("sfx_volume", DEFAULT_VOLUME)
 	music_volume = data["sound"].get("music_volume", DEFAULT_VOLUME)
