@@ -38,6 +38,8 @@ func _physics_process(_delta: float) -> void:
 			_waypoint_move()
 		EnemyState.IDLE:
 			_move_to_state(EnemyState.MOVING)
+		EnemyState.DEAD:
+			queue_free()
 
 
 func _waypoint_move() -> void:

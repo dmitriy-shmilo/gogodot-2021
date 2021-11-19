@@ -12,6 +12,7 @@ export(float) var attack_rate = 1
 
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
+onready var _range_shape: CollisionShape2D = $"RangeArea/RangeShape"
 
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
@@ -84,6 +85,12 @@ func _can_move_to_state(state: int) -> bool:
 func _move_to_state(state: int) -> void:
 	if _can_move_to_state(state):
 		_state = state
+	
+	match state:
+		TowerState.INACTIVE, TowerState.DEAD:
+			_range_shape.call_deferred("set_disabled", true)
+		TowerState.IDLE:
+			_range_shape.call_deferred("set_disabled", false)
 
 
 func _describe_state() -> String:
