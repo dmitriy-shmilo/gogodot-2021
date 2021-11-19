@@ -4,6 +4,7 @@ extends Node2D
 onready var _pause_container: ColorRect = $Gui/PauseContainer
 
 func _ready():
+	get_tree().change_scene("res://game_screen/levels/level0.tscn")
 	pass
 
 

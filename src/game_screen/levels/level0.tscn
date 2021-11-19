@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_screen/entities/enemy_unit.gd" type="Script" id=3]
+[ext_resource path="res://game_screen/entities/enemy_unit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
+[ext_resource path="res://game_screen/entities/player_tower.tscn" type="PackedScene" id=6]
+
+[node name="Level0" type="Node2D"]
+
+[node name="EnemyUnit" parent="." instance=ExtResource( 4 )]
+position = Vector2( -35.919, 145.987 )
+script = ExtResource( 3 )
+
+[node name="EnemyUnit2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -7.24659, 246.341 )
+script = ExtResource( 3 )
+
+[node name="PlayerCore" parent="." instance=ExtResource( 2 )]
+position = Vector2( 667.217, 197.356 )
+script = ExtResource( 5 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
+position = Vector2( -68.279, 136.035 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 132.88, 85.9899, 180.223, 207.24, 307.95, 115.093 )
+width = 2.0
+
+[node name="PlayerTower" parent="." instance=ExtResource( 6 )]
+position = Vector2( 211.709, 138.991 )
+
+[node name="PlayerTower2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 190.69, 276.111 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 347.544, 177.038 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
