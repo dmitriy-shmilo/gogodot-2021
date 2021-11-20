@@ -12,6 +12,7 @@ signal activity_changed(source, is_active)
 
 export(float) var damage = 40
 export(float) var attack_rate = 1
+export(float) var energy = 20
 
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
@@ -71,8 +72,6 @@ func _toggle_active() -> void:
 			_move_to_state(TowerState.IDLE)
 		_:
 			_move_to_state(TowerState.INACTIVE)
-	
-	emit_signal("activity_changed", self, _state != TowerState.INACTIVE)
 
 
 func _can_move_to_state(state: int) -> bool:
@@ -93,14 +92,20 @@ func _can_move_to_state(state: int) -> bool:
 
 
 func _move_to_state(state: int) -> void:
-	if _can_move_to_state(state):
-		_state = state
+	var old_state = _state
+	if not _can_move_to_state(state):
+		return
+	
+	_state = state
 	
 	match state:
 		TowerState.INACTIVE, TowerState.DEAD:
 			_range_shape.call_deferred("set_disabled", true)
+			emit_signal("activity_changed", self, false)
 		TowerState.IDLE:
 			_range_shape.call_deferred("set_disabled", false)
+			if old_state == TowerState.INACTIVE:
+				emit_signal("activity_changed", self, true)
 
 
 func _describe_state() -> String:

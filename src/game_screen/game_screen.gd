@@ -4,6 +4,7 @@ export(int) var current_level_index = 0
 
 onready var _pause_container: ColorRect = $"Gui/CanvasLayer/PauseContainer"
 onready var _camera: KinematicBody2D = $"Camera"
+onready var _gui: Gui = $"Gui"
 
 var _levels = [
 	preload("res://game_screen/levels/level0.tscn"),
@@ -23,12 +24,19 @@ func _unhandled_input(event) -> void:
 
 func _load_level(index: int) -> void:
 	if _current_level != null:
+		_current_level.teardown()
 		remove_child(_current_level)
 	
 	_current_level = _levels[index].instance() as Level
 	add_child(_current_level)
-	_camera.position = _current_level.get_start_position()
 
+	_camera.position = _current_level.get_start_position()
+	_current_level.connect("energy_changed", self, "_level_energy_changed")
+	_current_level.setup()
+
+
+func _level_energy_changed(level, current_energy, total_energy):
+	_gui.set_energy(current_energy, total_energy)
 
 func _on_QuitButton_pressed() -> void:
 	_pause_container.visible = false
