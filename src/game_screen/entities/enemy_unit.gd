@@ -10,6 +10,7 @@ enum EnemyState {
 }
 
 onready var line: Line2D = $"../Line2D"
+onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 
 export(float) var move_speed = 100
 export(float) var max_hitpoints = 100
@@ -83,6 +84,12 @@ func _can_move_to_state(state: int) -> bool:
 func _move_to_state(state: int) -> void:
 	if _can_move_to_state(state):
 		_state = state
+	
+	match state:
+		EnemyState.DEAD:
+			_enemy_shape.call_deferred("set_disabled", true)
+		_:
+			_enemy_shape.call_deferred("set_disabled", false)
 
 
 func _describe_state() -> String:
