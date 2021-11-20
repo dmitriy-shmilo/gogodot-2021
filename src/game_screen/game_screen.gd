@@ -3,7 +3,7 @@ extends Node2D
 export(int) var current_level_index = 0
 
 onready var _pause_container: ColorRect = $"Gui/CanvasLayer/PauseContainer"
-onready var _camera: Camera2D = $"Camera"
+onready var _camera: KinematicBody2D = $"Camera"
 
 var _levels = [
 	preload("res://game_screen/levels/level0.tscn"),
