@@ -73,5 +73,8 @@ margin_right = 312.0
 margin_bottom = 20.0
 text = "Continue"
 
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

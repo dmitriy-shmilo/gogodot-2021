@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://game_screen/entities/enemy_unit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
 [ext_resource path="res://game_screen/entities/player_tower.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game_screen/game.gd" type="Script" id=7]
 [ext_resource path="res://assets/floor.png" type="Texture" id=8]
 
 [node name="Level0" type="Node2D"]
@@ -25,7 +24,7 @@ position = Vector2( -35.919, 145.987 )
 position = Vector2( -7.24659, 246.341 )
 
 [node name="PlayerCore" parent="." instance=ExtResource( 2 )]
-position = Vector2( 667.217, 197.356 )
+position = Vector2( 332.152, 202.564 )
 script = ExtResource( 5 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
@@ -42,21 +41,3 @@ scale = Vector2( 1, 1 )
 [node name="PlayerTower2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 190.69, 276.111 )
 scale = Vector2( 1, 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 232.389, 187.421 )
-current = true
-
-[node name="Game" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Game"]
-
-[node name="EnergyBar" type="ProgressBar" parent="Game/CanvasLayer"]
-margin_right = 283.0
-margin_bottom = 18.0
-value = 50.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}

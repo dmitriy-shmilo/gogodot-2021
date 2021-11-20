@@ -2,7 +2,8 @@ extends Node2D
 
 export(int) var current_level_index = 0
 
-onready var _pause_container: ColorRect = $Gui/CanvasLayer/PauseContainer
+onready var _pause_container: ColorRect = $"Gui/CanvasLayer/PauseContainer"
+onready var _camera: Camera2D = $"Camera"
 
 var _levels = [
 	preload("res://game_screen/levels/level0.tscn"),
@@ -26,6 +27,7 @@ func _load_level(index: int) -> void:
 	
 	_current_level = _levels[index].instance() as Level
 	add_child(_current_level)
+	_camera.position = _current_level.get_start_position()
 
 
 func _on_QuitButton_pressed() -> void:
