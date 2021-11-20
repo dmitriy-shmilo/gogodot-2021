@@ -12,7 +12,7 @@ enum EnemyState {
 onready var line: Line2D = $"../Line2D"
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 
-export(float) var move_speed = 10
+export(float) var move_speed = 20
 export(float) var max_hitpoints = 100
 export(float) var current_hitpoints = max_hitpoints
 
@@ -22,7 +22,7 @@ var _target_point_index = 0
 var _total_points = 0
 var _points: PoolVector2Array = PoolVector2Array()
 var _state = EnemyState.IDLE
-
+var _current_threat = null
 
 func is_threat() -> bool:
 	return _state != EnemyState.DEAD
@@ -31,9 +31,11 @@ func is_threat() -> bool:
 # source should be PlayerTower, but then it causes cyclic dependency
 func receive_damage(source: Node, amount: float) -> void:
 	current_hitpoints -= amount
+	if _current_threat == null:
+		_current_threat = source
+		_move_to_state(EnemyState.AGGRAVATED)
 	if current_hitpoints <= 0:
 		_move_to_state(EnemyState.DEAD)
-	
 
 
 func _ready() -> void:
@@ -45,26 +47,37 @@ func _physics_process(_delta: float) -> void:
 	match _state:
 		EnemyState.MOVING:
 			_waypoint_move()
+		EnemyState.AGGRAVATED:
+			_threat_move()
 		EnemyState.IDLE:
 			_move_to_state(EnemyState.MOVING)
-			
+
+
+func _threat_move() -> void:
+	if _move_towards(_current_threat.global_position):
+		_move_to_state(EnemyState.ATTACKING)
 
 
 func _waypoint_move() -> void:
 	if _total_points == 0:
 		return
-
-	var target = _points[_target_point_index]
 	
-	if position.distance_to(target) < _distance_threshold:
-		_target_point_index = _target_point_index + 1
+	if not _move_towards(_points[_target_point_index]):
+		return
 	
+	_target_point_index = _target_point_index + 1
 	if  _target_point_index >= _total_points:
 		_move_to_state(EnemyState.DEAD)
-	
+
+
+func _move_towards(target) -> bool:
+	if position.distance_to(target) < _distance_threshold:
+		return true
+
 	_velocity = (target - position).normalized() * move_speed
 	_velocity = move_and_slide(_velocity)
 	look_at(target)
+	return false
 
 
 func _can_move_to_state(state: int) -> bool:
@@ -92,7 +105,7 @@ func _can_move_to_state(state: int) -> bool:
 func _move_to_state(state: int) -> void:
 	if _can_move_to_state(state):
 		_state = state
-	
+
 	match state:
 		EnemyState.DEAD:
 			_enemy_shape.call_deferred("set_disabled", true)
