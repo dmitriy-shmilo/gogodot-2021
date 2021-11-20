@@ -12,7 +12,7 @@ enum EnemyState {
 onready var line: Line2D = $"../Line2D"
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 
-export(float) var move_speed = 100
+export(float) var move_speed = 10
 export(float) var max_hitpoints = 100
 export(float) var current_hitpoints = max_hitpoints
 
@@ -28,6 +28,14 @@ func is_threat() -> bool:
 	return _state != EnemyState.DEAD
 
 
+# source should be PlayerTower, but then it causes cyclic dependency
+func receive_damage(source: Node, amount: float) -> void:
+	current_hitpoints -= amount
+	if current_hitpoints <= 0:
+		_move_to_state(EnemyState.DEAD)
+	
+
+
 func _ready() -> void:
 	_points = line.points
 	_total_points = _points.size()
@@ -39,8 +47,7 @@ func _physics_process(_delta: float) -> void:
 			_waypoint_move()
 		EnemyState.IDLE:
 			_move_to_state(EnemyState.MOVING)
-		EnemyState.DEAD:
-			queue_free()
+			
 
 
 func _waypoint_move() -> void:
@@ -57,6 +64,7 @@ func _waypoint_move() -> void:
 	
 	_velocity = (target - position).normalized() * move_speed
 	_velocity = move_and_slide(_velocity)
+	look_at(target)
 
 
 func _can_move_to_state(state: int) -> bool:
@@ -88,6 +96,7 @@ func _move_to_state(state: int) -> void:
 	match state:
 		EnemyState.DEAD:
 			_enemy_shape.call_deferred("set_disabled", true)
+			call_deferred("queue_free")
 		_:
 			_enemy_shape.call_deferred("set_disabled", false)
 

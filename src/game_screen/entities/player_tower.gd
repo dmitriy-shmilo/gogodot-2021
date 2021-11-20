@@ -1,4 +1,5 @@
 extends Node2D
+class_name PlayerTower
 
 enum TowerState {
 	INACTIVE,
@@ -7,7 +8,9 @@ enum TowerState {
 	DEAD
 }
 
-export(float) var damage = 20
+signal activity_changed(source, is_active)
+
+export(float) var damage = 40
 export(float) var attack_rate = 1
 
 onready var _tower_container: Node2D = $"TowerContainer"
@@ -21,7 +24,7 @@ func _ready() -> void:
 	pass
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match _state:
 		TowerState.INACTIVE, TowerState.DEAD:
 			return
@@ -36,16 +39,21 @@ func _physics_process(_delta: float) -> void:
 				_retarget()
 			else:
 				_tower_container.look_at(_target.global_position)
+				_target.receive_damage(self, damage * delta)
 
 
 func _retarget() -> void:
+	match _state:
+		TowerState.DEAD, TowerState.INACTIVE:
+			return
+
 	var bodies = _range_area.get_overlapping_bodies()
 	var new_target = null
 	for body in bodies:
 		if _can_target(body):
 			new_target = body
 			break
-	
+
 	_attack(new_target)
 
 
@@ -63,6 +71,8 @@ func _toggle_active() -> void:
 			_move_to_state(TowerState.IDLE)
 		_:
 			_move_to_state(TowerState.INACTIVE)
+	
+	emit_signal("activity_changed", self, _state != TowerState.INACTIVE)
 
 
 func _can_move_to_state(state: int) -> bool:
