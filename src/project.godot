@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://settings_screen/keybinding_button.gd"
 }, {
 "base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://game_screen/levels/level.gd"
+}, {
+"base": "Node2D",
 "class": "PlayerTower",
 "language": "GDScript",
 "path": "res://game_screen/entities/player_tower.gd"
@@ -27,13 +32,14 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "EnemyUnit": "",
 "KeyBindingButton": "",
+"Level": "",
 "PlayerTower": ""
 }
 
 [application]
 
 config/name="rearguard"
-run/main_scene="res://game_screen/levels/level0.tscn"
+run/main_scene="res://game_screen/game_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

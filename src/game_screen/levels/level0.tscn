@@ -2,14 +2,15 @@
 
 [ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game_screen/entities/enemy_unit.gd" type="Script" id=3]
+[ext_resource path="res://game_screen/levels/level.gd" type="Script" id=3]
 [ext_resource path="res://game_screen/entities/enemy_unit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
 [ext_resource path="res://game_screen/entities/player_tower.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game_screen/levels/game.gd" type="Script" id=7]
+[ext_resource path="res://game_screen/game.gd" type="Script" id=7]
 [ext_resource path="res://assets/floor.png" type="Texture" id=8]
 
 [node name="Level0" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Floor" type="Sprite" parent="."]
 position = Vector2( 240.333, 200.584 )
@@ -19,11 +20,9 @@ region_rect = Rect2( 0, 0, 1280, 720 )
 
 [node name="EnemyUnit" parent="." instance=ExtResource( 4 )]
 position = Vector2( -35.919, 145.987 )
-script = ExtResource( 3 )
 
 [node name="EnemyUnit2" parent="." instance=ExtResource( 4 )]
 position = Vector2( -7.24659, 246.341 )
-script = ExtResource( 3 )
 
 [node name="PlayerCore" parent="." instance=ExtResource( 2 )]
 position = Vector2( 667.217, 197.356 )
