@@ -4,10 +4,10 @@
 [ext_resource path="res://util/state_label.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game_screen/entities/enemy_unit.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.0
 
-[node name="EnemyUnit" type="KinematicBody2D"]
+[node name="EnemyUnit" type="KinematicBody2D" groups=["EnemyUnit"]]
 collision_mask = 0
 script = ExtResource( 3 )
 

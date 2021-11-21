@@ -7,40 +7,34 @@
 [ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
 [ext_resource path="res://game_screen/entities/player_tower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game_screen/levels/tiles/walls.tres" type="TileSet" id=7]
-[ext_resource path="res://assets/floor.png" type="Texture" id=8]
+[ext_resource path="res://game_screen/levels/tile_map.gd" type="Script" id=8]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Floor" type="Sprite" parent="."]
-position = Vector2( 240.333, 200.584 )
-texture = ExtResource( 8 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 1280, 720 )
-
 [node name="EnemyUnit" parent="." instance=ExtResource( 4 )]
-position = Vector2( -35.919, 145.987 )
+position = Vector2( 0.669792, 4.69803 )
 
 [node name="EnemyUnit2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -7.24659, 246.341 )
+position = Vector2( 3.73005, 15.5502 )
 
 [node name="PlayerCore" parent="." instance=ExtResource( 2 )]
 position = Vector2( 332.152, 202.564 )
 script = ExtResource( 5 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
-position = Vector2( -68.279, 136.035 )
+position = Vector2( 13.7459, 11.9432 )
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( -39.6949, 182.098, 180.223, 207.24, -38.1021, 327.442 )
+points = PoolVector2Array( 14.0167, 79.6075, 9.67564, 47.4114, 7.58856, 6.93935 )
 width = 2.0
 
 [node name="PlayerTower" parent="." instance=ExtResource( 6 )]
-position = Vector2( 211.709, 138.991 )
+position = Vector2( 192.282, 23.8528 )
 scale = Vector2( 1, 1 )
 
 [node name="PlayerTower2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 190.69, 276.111 )
+position = Vector2( 319.095, 105.536 )
 scale = Vector2( 1, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -49,4 +43,5 @@ cell_size = Vector2( 32, 32 )
 cell_tile_origin = 1
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 262144, 0, 65536, 327680, 0, 131072, 393216, 0, 196608, 524288, 0, 65536, 589824, 0, 131072, 655360, 0, 196608 )
+tile_data = PoolIntArray( -65538, 0, 131076, -65537, 0, 2, -131072, 0, 2, -131071, 0, 131077, -2, 0, 131072, -65535, 0, 131072, 65534, 0, 131072, 1, 0, 131072, 3, 0, 131076, 4, 0, 3, 131070, 0, 131072, 65537, 0, 393222, 65538, 0, 0, 65539, 0, 196613, 196606, 0, 131072, 131073, 0, 196609, 131074, 0, 196611, 262142, 0, 131072, 196616, 0, 131076, 196617, 0, 2, 196618, 0, 2, 196619, 0, 3, 327678, 0, 131072, 262144, 0, 1, 262145, 0, 2, 262146, 0, 3, 262152, 0, 131072, 393214, 0, 131072, 327688, 0, 131072, 458750, 0, 131072, 393216, 0, 1, 393217, 0, 2, 393218, 0, 3, 393220, 0, 65536, 393224, 0, 131072, 524286, 0, 131072, 458756, 0, 131072, 458760, 0, 131072, 589822, 0, 131072, 524288, 0, 131076, 524289, 0, 3, 524292, 0, 196608, 524296, 0, 196612, 524297, 0, 2, 524298, 0, 2, 524299, 0, 2, 524300, 0, 3, 655358, 0, 131072, 589824, 0, 131072, 720894, 0, 131072, 655360, 0, 196608, 786430, 0, 131072, 851966, 0, 196608 )
+script = ExtResource( 8 )

@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "PlayerTower",
 "language": "GDScript",
 "path": "res://game_screen/entities/player_tower.gd"
+}, {
+"base": "TileMap",
+"class": "TileMapMesh",
+"language": "GDScript",
+"path": "res://game_screen/levels/tile_map.gd"
 } ]
 _global_script_class_icons={
 "EnemyUnit": "",
 "Gui": "",
 "KeyBindingButton": "",
 "Level": "",
-"PlayerTower": ""
+"PlayerTower": "",
+"TileMapMesh": ""
 }
 
 [application]
