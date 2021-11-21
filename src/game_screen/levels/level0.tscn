@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game_screen/entities/enemy_unit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
 [ext_resource path="res://game_screen/entities/player_tower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_screen/levels/tiles/walls.tres" type="TileSet" id=7]
 [ext_resource path="res://assets/floor.png" type="Texture" id=8]
 
 [node name="Level0" type="Node2D"]
@@ -31,7 +32,7 @@ script = ExtResource( 5 )
 position = Vector2( -68.279, 136.035 )
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( 132.88, 85.9899, 180.223, 207.24, 307.95, 115.093 )
+points = PoolVector2Array( -39.6949, 182.098, 180.223, 207.24, -38.1021, 327.442 )
 width = 2.0
 
 [node name="PlayerTower" parent="." instance=ExtResource( 6 )]
@@ -41,3 +42,11 @@ scale = Vector2( 1, 1 )
 [node name="PlayerTower2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 190.69, 276.111 )
 scale = Vector2( 1, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+cell_tile_origin = 1
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 262144, 0, 65536, 327680, 0, 131072, 393216, 0, 196608, 524288, 0, 65536, 589824, 0, 131072, 655360, 0, 196608 )
