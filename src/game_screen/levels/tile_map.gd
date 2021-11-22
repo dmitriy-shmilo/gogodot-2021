@@ -1,6 +1,8 @@
 extends TileMap
 class_name TileMapMesh
 
+const COST_INCREASE = 2
+
 var path_mesh: AStar2D
 
 var _width: int = 0
@@ -58,6 +60,14 @@ func find(from: Vector2, to: Vector2) -> PoolVector2Array:
 	var ty = floor(to.y / _cell_size)
 	
 	return path_mesh.get_point_path(_point_id(fx, fy), _point_id(tx, ty))
+
+
+func increase_cost(at: Vector2) -> void:
+	var x = floor(at.x / _cell_size)
+	var y = floor(at.y / _cell_size)
+	var id = _point_id(x, y)
+	var scale = path_mesh.get_point_weight_scale(id) + COST_INCREASE
+	path_mesh.set_point_weight_scale(id, scale)
 
 
 func _point_id(x: int, y: int) -> int:

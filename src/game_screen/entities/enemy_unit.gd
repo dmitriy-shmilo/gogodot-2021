@@ -9,11 +9,12 @@ enum EnemyState {
 	DEAD
 }
 
-onready var line: Line2D = $"../Line2D"
+signal unit_killed(source, coord)
+
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 
-export(float) var move_speed = 35
-export(float) var max_hitpoints = 100
+export(float) var move_speed = 45
+export(float) var max_hitpoints = 50
 export(float) var current_hitpoints = max_hitpoints
 
 var _velocity = Vector2.ZERO
@@ -38,8 +39,8 @@ func receive_damage(source: Node, amount: float) -> void:
 		_move_to_state(EnemyState.DEAD)
 
 
-func _ready() -> void:
-	_points = line.points
+func setup(points) -> void:
+	_points = points
 	_total_points = _points.size()
 
 
@@ -66,7 +67,7 @@ func _waypoint_move() -> void:
 		return
 	
 	_target_point_index = _target_point_index + 1
-	if  _target_point_index >= _total_points:
+	if  _target_point_index == _total_points - 1:
 		_move_to_state(EnemyState.DEAD)
 
 
@@ -110,6 +111,7 @@ func _move_to_state(state: int) -> void:
 		EnemyState.DEAD:
 			_enemy_shape.call_deferred("set_disabled", true)
 			call_deferred("queue_free")
+			emit_signal("unit_killed", self, _points[_target_point_index])
 		_:
 			_enemy_shape.call_deferred("set_disabled", false)
 

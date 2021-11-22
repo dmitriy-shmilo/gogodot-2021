@@ -8,8 +8,7 @@ export(float) var current_energy = 100
 
 onready var _core: Node2D = $"PlayerCore"
 onready var _spawner: Node2D = $"EnemySpawner"
-onready var _tilemap: TileMapMesh = $"TileMap"
-onready var _line: Line2D = $"Line2D"
+onready var _tilemap: TileMapMesh = $"Walls"
 
 var _towers: Array
 
@@ -20,13 +19,12 @@ func _ready() -> void:
 func setup() -> void:
 	for tower in _towers:
 		tower.connect("activity_changed", self, "_tower_activity_changed")
-	
+
 	emit_signal("energy_changed", self, current_energy, total_energy)
 	_tilemap.setup()
-	_line.points = _tilemap.find(_spawner.global_position, _core.global_position)
-	for e in get_tree().get_nodes_in_group("EnemyUnit"):
-		e._points = _line.points
-		e._total_points = _line.points.size()
+	
+	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
+		spawner.setup(_tilemap, _core)
 
 
 func teardown() -> void:
@@ -45,3 +43,8 @@ func _tower_activity_changed(tower, is_active) -> void:
 		current_energy += tower.energy
 
 	emit_signal("energy_changed", self, current_energy, total_energy)
+
+
+func _on_Timer_timeout() -> void:
+	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
+		spawner.spawn_next()
