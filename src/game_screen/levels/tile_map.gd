@@ -3,23 +3,40 @@ class_name TileMapMesh
 
 var path_mesh: AStar2D
 
+var _width: int = 0
+var _cell_size: int = 1
+var _cell_half_size: int = 1
+var _map_rect: Rect2
+var _offset_x: int = 0
+var _offset_y: int = 0
+
 func _ready() -> void:
 	path_mesh = AStar2D.new()
-	
+
 
 func setup() -> void:
-	for y in 100:
-		for x in 100:
+	_map_rect = get_used_rect()
+	_offset_x = int(_map_rect.position.x)
+	_offset_y = int(_map_rect.position.y)
+	_cell_size = int(cell_size.x) # assuming square cells
+	#warning-ignore:integer_division
+	_cell_half_size = int(_cell_size / 2)
+	_width = int(_map_rect.size.x)
+	
+	for y in range(_map_rect.position.y, _map_rect.end.y):
+		for x in range(_map_rect.position.x, _map_rect.end.x):
 			if _is_empty(x, y):
-				path_mesh.add_point(x + y * 100, Vector2(x * 32 + 16, y * 32 + 16))
+				path_mesh.add_point(_point_id(x, y),
+					Vector2(x * _cell_size + _cell_half_size,
+					y * _cell_size + _cell_half_size))
 
-	for y in 100:
-		for x in 100:
-			if path_mesh.has_point(x + y * 100):
-				var west = x > 0 and _connect_if_empty(x, y, -1, 0)
-				var north = y > 0 and _connect_if_empty(x, y, 0, -1)
-				var east = x < 99 and _connect_if_empty(x, y, 1, 0)
-				var south = y < 99 and _connect_if_empty(x, y, 0, 1)
+	for y in range(_map_rect.position.y, _map_rect.end.y):
+		for x in range(_map_rect.position.x, _map_rect.end.x):
+			if path_mesh.has_point(_point_id(x, y)):
+				var west = x > _map_rect.position.x and _connect_if_empty(x, y, -1, 0)
+				var north = y > _map_rect.position.y and _connect_if_empty(x, y, 0, -1)
+				var east = x < _map_rect.end.x - 1 and _connect_if_empty(x, y, 1, 0)
+				var south = y < _map_rect.end.y - 1 and _connect_if_empty(x, y, 0, 1)
 
 				if east and south:
 					var _southeast = _connect_if_empty(x, y, 1, 1)
@@ -35,12 +52,16 @@ func setup() -> void:
 
 
 func find(from: Vector2, to: Vector2) -> PoolVector2Array:
-	var fx = floor(from.x / 32)
-	var fy = floor(from.y / 32)
-	var tx = floor(to.x / 32)
-	var ty = floor(to.y / 32)
+	var fx = floor(from.x / _cell_size)
+	var fy = floor(from.y / _cell_size)
+	var tx = floor(to.x / _cell_size)
+	var ty = floor(to.y / _cell_size)
 	
-	return path_mesh.get_point_path(fx + fy * 100, tx + ty * 100)
+	return path_mesh.get_point_path(_point_id(fx, fy), _point_id(tx, ty))
+
+
+func _point_id(x: int, y: int) -> int:
+	return x - _offset_x + (y - _offset_y) * _width
 
 
 func _is_empty(x: int, y: int) -> bool:
@@ -49,6 +70,6 @@ func _is_empty(x: int, y: int) -> bool:
 
 func _connect_if_empty(x: int, y: int, dx: int, dy: int) -> bool:
 	if get_cell(x + dx, y + dy) == INVALID_CELL:
-		path_mesh.connect_points(x + y * 100, x + dx + (y + dy) * 100)
+		path_mesh.connect_points(_point_id(x, y), _point_id(x + dx, y + dy))
 		return true
 	return false
