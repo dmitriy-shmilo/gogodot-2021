@@ -16,14 +16,22 @@ func setup() -> void:
 	for y in 100:
 		for x in 100:
 			if path_mesh.has_point(x + y * 100):
-				_connect_if_empty(x, y, -1, 0)
-				_connect_if_empty(x, y, -1, -1)
-				_connect_if_empty(x, y, 0, -1)
-				_connect_if_empty(x, y, 1, -1)
-				_connect_if_empty(x, y, 1, 0)
-				_connect_if_empty(x, y, 1, 1)
-				_connect_if_empty(x, y, 0, 1)
-				_connect_if_empty(x, y, -1, 1)
+				var west = x > 0 and _connect_if_empty(x, y, -1, 0)
+				var north = y > 0 and _connect_if_empty(x, y, 0, -1)
+				var east = x < 99 and _connect_if_empty(x, y, 1, 0)
+				var south = y < 99 and _connect_if_empty(x, y, 0, 1)
+
+				if east and south:
+					var _southeast = _connect_if_empty(x, y, 1, 1)
+				
+				if east and north:
+					var _northeast = _connect_if_empty(x, y, 1, -1)
+				
+				if west and south:
+					var _southwest = _connect_if_empty(x, y, -1, 1)
+				
+				if west and north:
+					var _northwest = _connect_if_empty(x, y, -1, -1)
 
 
 func find(from: Vector2, to: Vector2) -> PoolVector2Array:
@@ -39,6 +47,8 @@ func _is_empty(x: int, y: int) -> bool:
 	return get_cell(x, y) == INVALID_CELL
 
 
-func _connect_if_empty(x: int, y: int, dx: int, dy: int) -> void:
+func _connect_if_empty(x: int, y: int, dx: int, dy: int) -> bool:
 	if get_cell(x + dx, y + dy) == INVALID_CELL:
 		path_mesh.connect_points(x + y * 100, x + dx + (y + dy) * 100)
+		return true
+	return false
