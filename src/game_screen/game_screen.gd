@@ -31,17 +31,17 @@ func _load_level(index: int) -> void:
 	add_child(_current_level)
 
 	_camera.position = _current_level.get_start_position()
-	_current_level.connect("energy_changed", self, "_level_energy_changed")
+	var _err = _current_level.connect("energy_changed", self, "_level_energy_changed")
 	_current_level.setup()
 
 
-func _level_energy_changed(level, current_energy, total_energy):
+func _level_energy_changed(_level, current_energy, total_energy):
 	_gui.set_energy(current_energy, total_energy)
 
 func _on_QuitButton_pressed() -> void:
 	_pause_container.visible = false
 	get_tree().paused = false
-	get_tree().change_scene("res://title_screen/title_screen.tscn")
+	var _err = get_tree().change_scene("res://title_screen/title_screen.tscn")
 
 
 func _on_ContinueButton_pressed():

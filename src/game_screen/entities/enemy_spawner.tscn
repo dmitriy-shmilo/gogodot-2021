@@ -1,3 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[node name="EnemySpawner" type="Node2D"]
+modulate = Color( 0.215686, 0.137255, 0.137255, 1 )
+
+[node name="icon" type="Sprite" parent="."]
+scale = Vector2( 0.283486, 0.283486 )
+texture = ExtResource( 1 )

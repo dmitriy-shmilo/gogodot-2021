@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://game_screen/levels/level.gd"
 }, {
 "base": "Node2D",
+"class": "PlayerCore",
+"language": "GDScript",
+"path": "res://game_screen/entities/player_core.gd"
+}, {
+"base": "Node2D",
 "class": "PlayerTower",
 "language": "GDScript",
 "path": "res://game_screen/entities/player_tower.gd"
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Gui": "",
 "KeyBindingButton": "",
 "Level": "",
+"PlayerCore": "",
 "PlayerTower": "",
 "TileMapMesh": ""
 }

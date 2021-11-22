@@ -67,7 +67,7 @@ func _on_SpeechVolumeSlider_value_changed(value) -> void:
 
 func _on_BackButton_pressed() -> void:
 	Settings.save_settings()
-	get_tree().change_scene("res://title_screen/title_screen.tscn")
+	var _err = get_tree().change_scene("res://title_screen/title_screen.tscn")
 
 
 func _on_KeyBindingButton_keybind_requested(sender: KeyBindingButton) -> void:

@@ -12,7 +12,7 @@ enum EnemyState {
 onready var line: Line2D = $"../Line2D"
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 
-export(float) var move_speed = 20
+export(float) var move_speed = 35
 export(float) var max_hitpoints = 100
 export(float) var current_hitpoints = max_hitpoints
 

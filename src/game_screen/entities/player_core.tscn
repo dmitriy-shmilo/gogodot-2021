@@ -13,7 +13,7 @@ initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
-[node name="Node2D" type="Node2D"]
+[node name="PlayerCore" type="Node2D"]
 
 [node name="icon" type="Sprite" parent="."]
 position = Vector2( 0.44445, 0.139744 )
