@@ -12,6 +12,7 @@ enum EnemyState {
 signal unit_killed(source, coord)
 
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
+onready var _animated_sprite: AnimatedSprite = $"AnimatedSprite"
 
 export(float) var move_speed = 45
 export(float) var max_hitpoints = 50
@@ -24,6 +25,9 @@ var _total_points = 0
 var _points: PoolVector2Array = PoolVector2Array()
 var _state = EnemyState.IDLE
 var _current_threat = null
+
+func _ready() -> void:
+	_animated_sprite.play("creep" + str(randi() % 2 + 1))
 
 func is_threat() -> bool:
 	return _state != EnemyState.DEAD
