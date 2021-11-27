@@ -36,9 +36,6 @@ func is_threat() -> bool:
 # source should be PlayerTower, but then it causes cyclic dependency
 func receive_damage(source: Node, amount: float) -> void:
 	current_hitpoints -= amount
-	if _current_threat == null:
-		_current_threat = source
-		_move_to_state(EnemyState.AGGRAVATED)
 	if current_hitpoints <= 0:
 		_move_to_state(EnemyState.DEAD)
 
@@ -94,8 +91,7 @@ func _can_move_to_state(state: int) -> bool:
 				or _state == EnemyState.ATTACKING \
 				or _state == EnemyState.IDLE
 		EnemyState.AGGRAVATED:
-			return _state == EnemyState.MOVING \
-				or _state == EnemyState.IDLE
+			return false
 		EnemyState.ATTACKING:
 			return _state == EnemyState.MOVING \
 				or _state == EnemyState.AGGRAVATED \
