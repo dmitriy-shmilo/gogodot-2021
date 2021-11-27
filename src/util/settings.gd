@@ -94,7 +94,8 @@ func _get_data() -> Dictionary:
 			action_map[action] = null
 			continue
 		
-		action_map[action] = (list[0] as InputEventKey).scancode
+		if list[0] is InputEventKey:
+			action_map[action] = (list[0] as InputEventKey).scancode
 		
 
 	return {

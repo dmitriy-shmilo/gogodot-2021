@@ -37,6 +37,7 @@ func _prepare_keybindings() -> void:
 	for action in actions:
 		if action.begins_with("ui_") or action.begins_with("system_"):
 			continue;
+
 		var label = KeyBindingLabelScene.instance()
 		label.text = action
 		var button = KeyBindingButtonScene.instance()
@@ -82,7 +83,13 @@ func _on_KeybindingCancelButton_pressed() -> void:
 
 
 func _on_KeyBindingPopup_action_remapped(action, event) -> void:
-	InputMap.action_erase_events(action)
+	var events = InputMap.get_action_list(action)
+	
+	for i in range(events.size()):
+		if events[i] is InputEventKey:
+			InputMap.action_erase_events(events[i])
+			break
+	
 	if event != null:
 		InputMap.action_add_event(action, event)
 
