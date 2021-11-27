@@ -1,7 +1,8 @@
 extends TileMap
 class_name TileMapMesh
 
-const COST_INCREASE = 2
+const COST_INCREASE = 4
+const COST_INCREASE_CONNECTED = 1
 
 var path_mesh: AStar2D
 
@@ -66,8 +67,13 @@ func increase_cost(at: Vector2) -> void:
 	var x = floor(at.x / _cell_size)
 	var y = floor(at.y / _cell_size)
 	var id = _point_id(x, y)
+	
 	var scale = path_mesh.get_point_weight_scale(id) + COST_INCREASE
 	path_mesh.set_point_weight_scale(id, scale)
+	
+	for connection in path_mesh.get_point_connections(id):
+		scale = path_mesh.get_point_weight_scale(connection) + COST_INCREASE_CONNECTED
+		path_mesh.set_point_weight_scale(connection, scale)
 
 
 func _point_id(x: int, y: int) -> int:
