@@ -33,7 +33,7 @@ func _prepare_volume() -> void:
 
 
 func _prepare_keybindings() -> void:
-	var actions = InputMap.get_actions()
+	var actions = ["up", "down", "left", "right", "zoom_in", "zoom_out"]
 	for action in actions:
 		if action.begins_with("ui_") or action.begins_with("system_"):
 			continue;
@@ -87,7 +87,7 @@ func _on_KeyBindingPopup_action_remapped(action, event) -> void:
 	
 	for i in range(events.size()):
 		if events[i] is InputEventKey:
-			InputMap.action_erase_events(events[i])
+			InputMap.action_erase_event(action, events[i])
 			break
 	
 	if event != null:
