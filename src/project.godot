@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="rearguard"
+config/name="donutdefense"
 run/main_scene="res://game_screen/game_screen.tscn"
 config/icon="res://icon.png"
 

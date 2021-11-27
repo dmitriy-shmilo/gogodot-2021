@@ -1,4 +1,4 @@
-NAME_OVERRIDE := "rearguard"
+NAME_OVERRIDE := "donutdefense"
 PROJECT_NAME = $(or $(NAME_OVERRIDE), $(notdir $(CURDIR)))
 GODOT = "/Applications/Godot.app/Contents/MacOS/Godot"
 
