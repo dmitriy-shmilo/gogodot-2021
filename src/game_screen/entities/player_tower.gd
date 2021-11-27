@@ -22,6 +22,7 @@ onready var _range_shape: CollisionShape2D = $"RangeArea/RangeShape"
 onready var _base_sprite: Sprite = $"BaseSprite"
 onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
 onready var _power_indicator: AnimatedSprite = $"PowerIndicator"
+onready var _shot_animation: AnimatedSprite = $"TowerContainer/ShotAnimation"
 
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
@@ -31,6 +32,7 @@ func _ready() -> void:
 	var sprite_index = randi() % 2
 	_base_sprite.region_rect.position.y = sprite_index * 64
 	_tower_sprite.region_rect.position.y = sprite_index * 64
+	_shot_animation.animation = "Shot" + str(sprite_index)
 	_toggle_active(false)
 
 
@@ -38,17 +40,20 @@ func _draw() -> void:
 	if _is_hovered_over:
 		draw_circle(Vector2.ZERO, attack_range, range_color)
 
+
 func _physics_process(delta: float) -> void:
 	match _state:
 		TowerState.INACTIVE, TowerState.DEAD:
 			return
 		TowerState.IDLE:
-			if _target != null and _target.is_threat():
+			# TODO: get rid of is_instance_valid call
+			if _target != null \
+				and is_instance_valid(_target) \
+				and _target.is_threat():
 				_move_to_state(TowerState.ATTACKING)
 			else:
 				_target = null
 		TowerState.ATTACKING:
-			# play animation?
 			if _target == null or not _target.is_threat():
 				_retarget()
 			else:
@@ -87,6 +92,7 @@ func _toggle_active(active: bool) -> void:
 		_power_indicator.visible = false
 		return
 
+	_shot_animation.visible = false
 	_power_indicator.visible = true
 	modulate = Color.darkgray
 	_move_to_state(TowerState.INACTIVE)
@@ -117,11 +123,16 @@ func _move_to_state(state: int) -> void:
 	_state = state
 	
 	match state:
+		TowerState.ATTACKING:
+			_shot_animation.visible = true
 		TowerState.INACTIVE, TowerState.DEAD:
 			_range_shape.call_deferred("set_disabled", true)
 			emit_signal("activity_changed", self, false)
+			_shot_animation.visible = false
+			_shot_animation.frame = 0
 		TowerState.IDLE:
 			_range_shape.call_deferred("set_disabled", false)
+			_shot_animation.visible = false
 			if old_state == TowerState.INACTIVE:
 				emit_signal("activity_changed", self, true)
 

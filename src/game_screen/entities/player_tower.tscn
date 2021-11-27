@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game_screen/entities/player_tower.gd" type="Script" id=1]
 [ext_resource path="res://assets/turrets.png" type="Texture" id=2]
@@ -7,6 +7,51 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 105.689
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), null, null, null, null, null ],
+"loop": true,
+"name": "Shot1",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Shot0",
+"speed": 10.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 14.638, 15.039 )
@@ -50,7 +95,14 @@ region_rect = Rect2( 0, 0, 64, 64 )
 rotation = -1.5708
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 64, 64, 64, 64 )
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="ShotAnimation" type="AnimatedSprite" parent="TowerContainer"]
+position = Vector2( 51.9269, 0 )
+frames = SubResource( 9 )
+animation = "Shot1"
+frame = 2
+playing = true
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 margin_left = -5.82742
@@ -68,7 +120,6 @@ shape = SubResource( 2 )
 visible = false
 position = Vector2( 25.7153, -16.7432 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [connection signal="body_entered" from="RangeArea" to="." method="_on_RangeArea_body_entered"]
