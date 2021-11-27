@@ -13,6 +13,8 @@ signal activity_changed(source, is_active)
 export(float) var damage = 40
 export(float) var attack_rate = 1
 export(float) var energy = 20
+export(float) var attack_range = 100
+export(Color) var range_color = Color.cornflower
 
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
@@ -22,12 +24,17 @@ onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
 
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
+var _is_hovered_over = false
 
 func _ready() -> void:
 	var sprite_index = randi() % 2
 	_base_sprite.region_rect.position.y = sprite_index * 64
 	_tower_sprite.region_rect.position.y = sprite_index * 64
 
+
+func _draw() -> void:
+	if _is_hovered_over:
+		draw_circle(Vector2.ZERO, attack_range, range_color)
 
 func _physics_process(delta: float) -> void:
 	match _state:
@@ -131,3 +138,13 @@ func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 		and event.button_index == BUTTON_LEFT \
 		and event.pressed:
 			_toggle_active()
+
+
+func _on_ClickArea_mouse_entered() -> void:
+	_is_hovered_over = true
+	update()
+
+
+func _on_ClickArea_mouse_exited() -> void:
+	_is_hovered_over = false
+	update()
