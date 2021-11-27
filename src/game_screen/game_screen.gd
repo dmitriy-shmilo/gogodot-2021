@@ -3,7 +3,7 @@ extends Node2D
 export(int) var current_level_index = 0
 
 onready var _pause_container: ColorRect = $"Gui/CanvasLayer/PauseContainer"
-onready var _camera: KinematicBody2D = $"Camera"
+onready var _camera_body: KinematicBody2D = $"Camera"
 onready var _gui: Gui = $"Gui"
 
 var _levels = [
@@ -16,10 +16,10 @@ func _ready() -> void:
 
 
 func _unhandled_input(event) -> void:
-	if event.is_action("system_pause"):
+	if event.is_action_pressed("system_pause"):
 		get_tree().paused = true
 		_pause_container.visible = true
-		
+		return
 
 
 func _load_level(index: int) -> void:
@@ -30,13 +30,14 @@ func _load_level(index: int) -> void:
 	_current_level = _levels[index].instance() as Level
 	add_child(_current_level)
 
-	_camera.position = _current_level.get_start_position()
+	_camera_body.position = _current_level.get_start_position()
 	var _err = _current_level.connect("energy_changed", self, "_level_energy_changed")
 	_current_level.setup()
 
 
 func _level_energy_changed(_level, current_energy, total_energy):
 	_gui.set_energy(current_energy, total_energy)
+
 
 func _on_QuitButton_pressed() -> void:
 	_pause_container.visible = false
