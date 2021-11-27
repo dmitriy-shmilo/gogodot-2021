@@ -168,5 +168,5 @@ translations=PoolStringArray( "res://tr_keys.en.translation" )
 [rendering]
 
 quality/driver/driver_name="GLES2"
-environment/default_clear_color=Color( 0.862745, 0.862745, 0.823529, 1 )
+environment/default_clear_color=Color( 0.858824, 0.823529, 0.745098, 1 )
 environment/default_environment="res://default_env.tres"
