@@ -17,12 +17,16 @@ export(float) var energy = 20
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
 onready var _range_shape: CollisionShape2D = $"RangeArea/RangeShape"
+onready var _base_sprite: Sprite = $"BaseSprite"
+onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
 
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
 
 func _ready() -> void:
-	pass
+	var sprite_index = randi() % 2
+	_base_sprite.region_rect.position.y = sprite_index * 64
+	_tower_sprite.region_rect.position.y = sprite_index * 64
 
 
 func _physics_process(delta: float) -> void:
