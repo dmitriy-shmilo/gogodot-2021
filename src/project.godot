@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "EnemySpawner",
+"language": "GDScript",
+"path": "res://game_screen/entities/enemy_spawner.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "EnemyUnit",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://game_screen/levels/tile_map.gd"
 } ]
 _global_script_class_icons={
+"EnemySpawner": "",
 "EnemyUnit": "",
 "Gui": "",
 "KeyBindingButton": "",
@@ -72,7 +78,7 @@ settings/fps/force_fps=30
 [display]
 
 window/size/width=640
-window/size/height=320
+window/size/height=360
 window/size/test_width=1600
 window/size/test_height=900
 window/stretch/mode="2d"
@@ -81,6 +87,7 @@ window/stretch/aspect="keep"
 [global]
 
 layers=false
+color=false
 
 [importer_defaults]
 
@@ -149,4 +156,5 @@ translations=PoolStringArray( "res://tr_keys.en.translation" )
 [rendering]
 
 quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"

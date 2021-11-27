@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game_screen/entities/player_tower.gd" type="Script" id=1]
+[ext_resource path="res://assets/turrets.png" type="Texture" id=2]
 [ext_resource path="res://util/state_label.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/towers.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 105.689
@@ -22,17 +22,17 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="BaseSprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="TowerContainer" type="Node2D" parent="."]
 
 [node name="TowerSprite" type="Sprite" parent="TowerContainer"]
-rotation = 3.14159
-texture = ExtResource( 4 )
+rotation = -1.5708
+texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 64, 64, 64 )
+region_rect = Rect2( 64, 64, 64, 64 )
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 margin_left = -5.82742
