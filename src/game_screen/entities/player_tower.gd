@@ -21,6 +21,7 @@ onready var _range_area: Area2D = $"RangeArea"
 onready var _range_shape: CollisionShape2D = $"RangeArea/RangeShape"
 onready var _base_sprite: Sprite = $"BaseSprite"
 onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
+onready var _power_indicator: AnimatedSprite = $"PowerIndicator"
 
 var _target: EnemyUnit = null
 var _state = TowerState.INACTIVE
@@ -30,6 +31,7 @@ func _ready() -> void:
 	var sprite_index = randi() % 2
 	_base_sprite.region_rect.position.y = sprite_index * 64
 	_tower_sprite.region_rect.position.y = sprite_index * 64
+	_toggle_active(false)
 
 
 func _draw() -> void:
@@ -77,12 +79,17 @@ func _attack(enemy: EnemyUnit) -> void:
 	_target = enemy
 	_move_to_state(TowerState.IDLE if enemy == null else TowerState.ATTACKING)
 
-func _toggle_active() -> void:
-	match _state:
-		TowerState.INACTIVE:
-			_move_to_state(TowerState.IDLE)
-		_:
-			_move_to_state(TowerState.INACTIVE)
+
+func _toggle_active(active: bool) -> void:
+	if active:
+		modulate = Color.white
+		_move_to_state(TowerState.IDLE)
+		_power_indicator.visible = false
+		return
+
+	_power_indicator.visible = true
+	modulate = Color.darkgray
+	_move_to_state(TowerState.INACTIVE)
 
 
 func _can_move_to_state(state: int) -> bool:
@@ -137,7 +144,7 @@ func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 	if event is InputEventMouseButton \
 		and event.button_index == BUTTON_LEFT \
 		and event.pressed:
-			_toggle_active()
+			_toggle_active(_state == TowerState.INACTIVE)
 
 
 func _on_ClickArea_mouse_entered() -> void:
