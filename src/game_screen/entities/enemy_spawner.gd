@@ -1,6 +1,8 @@
 extends Node2D
 class_name EnemySpawner
 
+const FRAME_SIZE = 32
+
 signal core_damaged(source, damage)
 
 var _map: TileMapMesh
@@ -8,6 +10,7 @@ var _core: PlayerCore
 var _points: PoolVector2Array
 var _enemy_scene = preload("res://game_screen/entities/enemies/enemy_unit.tscn")
 
+onready var _spawner_sprite = $"SpawnerSprite"
 onready var _debug_line = $"Node/DebugLine"
 
 func setup(map, core) -> void:
@@ -15,6 +18,7 @@ func setup(map, core) -> void:
 	_core = core
 	_points = _map.find(global_position, _core.global_position)
 	_debug_line.points = _points
+	_spawner_sprite.region_rect.position.x = FRAME_SIZE * randi() % 2
 
 
 func spawn_next() -> void:
