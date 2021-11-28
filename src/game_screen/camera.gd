@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export(float) var speed = 200
-export(float) var friction = 0.1
-export(float) var acceleration = 0.3
+export(float) var speed = 400
+export(float) var friction = 0.15
+export(float) var acceleration = 0.5
 
 onready var _camera = $"Camera"
 
@@ -49,7 +49,12 @@ func get_input():
 	if Input.is_action_pressed("up"):
 		input.y -= 1
 
-	return input.normalized()
+	input = input.normalized()
+	
+	if Input.is_key_pressed(KEY_SHIFT):
+		input *= 1.5
+	
+	return input
 
 
 func _physics_process(_delta) -> void:
