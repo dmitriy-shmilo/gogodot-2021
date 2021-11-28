@@ -22,36 +22,12 @@ script = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Gui"]
 
-[node name="EnergyBar" type="ProgressBar" parent="Gui/CanvasLayer"]
-margin_left = 32.0
-margin_top = 8.0
-margin_right = 160.0
-margin_bottom = 24.0
-theme = ExtResource( 3 )
-value = 50.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="ProgressBar" parent="Gui/CanvasLayer"]
-margin_left = 32.0
-margin_top = 23.7855
-margin_right = 160.0
-margin_bottom = 39.7855
-theme = ExtResource( 7 )
-value = 50.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="PauseContainer" type="ColorRect" parent="Gui/CanvasLayer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,6 +72,30 @@ margin_right = 312.0
 margin_bottom = 20.0
 text = "Continue"
 
+[node name="EnergyBar" type="ProgressBar" parent="Gui/CanvasLayer"]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 24.0
+theme = ExtResource( 3 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="Gui/CanvasLayer"]
+margin_left = 32.0
+margin_top = 23.7855
+margin_right = 160.0
+margin_bottom = 39.7855
+theme = ExtResource( 7 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="Gui/CanvasLayer"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_left = 1.0
@@ -132,8 +132,10 @@ current = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera"]
 shape = SubResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 bus = "Music"
 
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="finished" from="SoundtrackPlayer" to="." method="_on_SoundtrackPlayer_finished"]

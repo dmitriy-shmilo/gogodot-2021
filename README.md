@@ -1,6 +1,15 @@
-
-
 # Credits #
 
-- [M4 Assault rifle firing](https://freesound.org/people/mnslugger20/sounds/259758/) SFX by mnslugger20
-- [30-30 Lever Rifle Gunshot 2](https://freesound.org/people/Erokia/sounds/410400/) SFX by Erokia
+## SFX ##
+- [M4 Assault rifle firing](https://freesound.org/people/mnslugger20/sounds/259758/) by mnslugger20
+- [30-30 Lever Rifle Gunshot 2](https://freesound.org/people/Erokia/sounds/410400/) by Erokia
+
+## Music ##
+- [Dream Raid](https://opengameart.org/content/dream-raid-cinematic-action-soundtrack) by [Matthew Pablo](http://www.matthewpablo.com/)
+- [Wasteland Overdrive](https://opengameart.org/content/wasteland-overdrive) by [Matthew Pablo](http://www.matthewpablo.com/)
+- [Imminent Threat](https://opengameart.org/content/imminent-threat) by [Matthew Pablo](http://www.matthewpablo.com/)
+- [The Fall of Arcana](https://opengameart.org/content/the-fall-of-arcana-epic-game-theme-music) by [Matthew Pablo](http://www.matthewpablo.com/)
+
+## Art ##
+- [Dmitriy Shmilo](https://github.com/dmitriy-shmilo)
+- [Irene Bagachuk](https://www.artstation.com/i_bahachuk)
