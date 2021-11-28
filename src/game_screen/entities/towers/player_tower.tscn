@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/turrets.png" type="Texture" id=4]
 [ext_resource path="res://game_screen/entities/towers/tower_variant1.tres" type="Resource" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 105.689
+[sub_resource type="CircleShape2D" id=15]
+resource_local_to_scene = true
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
@@ -83,7 +83,7 @@ range_color = Color( 0.239216, 0.407843, 0.117647, 0.12549 )
 collision_layer = 2
 
 [node name="RangeShape" type="CollisionShape2D" parent="RangeArea"]
-shape = SubResource( 1 )
+shape = SubResource( 15 )
 disabled = true
 
 [node name="BaseSprite" type="Sprite" parent="."]

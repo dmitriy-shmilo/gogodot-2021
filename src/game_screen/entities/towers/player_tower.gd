@@ -32,7 +32,11 @@ func _ready() -> void:
 	_base_sprite.region_rect.position.y = sprite_index * 64
 	_tower_sprite.region_rect.position.y = sprite_index * 64
 	_shot_animation.animation = "shot" + str(sprite_index)
-	_attack_timer.wait_time = 1.0 / variant.attack_rate 
+	# TODO: for some reason animation has to 
+	# play at least once before it's displayed
+	_shot_animation.play()
+	_attack_timer.wait_time = 1.0 / variant.attack_rate
+	(_range_shape.shape as CircleShape2D).radius = variant.attack_range
 	_toggle_active(false)
 
 
@@ -65,8 +69,8 @@ func _physics_process(delta: float) -> void:
 					return
 
 				_bullet_loaded = false
-				_shot_animation.play("shot" + str(variant.sprite_index))
 				_shot_animation.visible = true
+				_shot_animation.play()
 				_target.receive_damage(self, variant.damage)
 				_attack_timer.start()
 
