@@ -168,7 +168,8 @@ func _move_to_state(state: int) -> void:
 			_enemy_shape.call_deferred("set_disabled", true)
 			_animated_sprite.stop()
 			_animated_sprite.modulate = Color(0.3, 0.3, 0.3)
-			_death_effect.restart()
+			if Settings.particles:
+				_death_effect.restart()
 			emit_signal("unit_killed", self, _points[_target_point_index])
 			_cleanup_timer.start()
 		_:

@@ -12,6 +12,9 @@ var sfx_volume:float = DEFAULT_VOLUME setget set_sfx_volume
 var music_volume:float = DEFAULT_VOLUME setget set_music_volume
 var speech_volume:float = DEFAULT_VOLUME setget set_speech_volume
 
+var fullscreen: bool = false setget set_fullscreen
+var particles: bool = false
+
 var _master_bus_idx = -1
 var _sfx_bus_idx = -1
 var _music_bus_idx = -1
@@ -42,6 +45,11 @@ func set_music_volume(value: float) -> void:
 func set_speech_volume(value: float) -> void:
 	speech_volume = clamp(value, MIN_VOLUME, MAX_VOLUME)
 	_set_volume(_speech_bus_idx, value)
+
+
+func set_fullscreen(value: bool) -> void:
+	fullscreen = value
+	OS.window_fullscreen = value
 
 
 func save_settings() -> void:
@@ -105,30 +113,40 @@ func _get_data() -> Dictionary:
 			"music_volume" : music_volume,
 			"speech_volume" : speech_volume
 		},
+		"video": {
+			"particles" : particles,
+			"fullscreen" : fullscreen
+		},
 		"actions" : action_map
 	}
 
 
 func _set_from_data(data: Dictionary) -> void:
-	set_master_volume(data["sound"].get("master_volume", DEFAULT_VOLUME))
-	set_sfx_volume(data["sound"].get("sfx_volume", DEFAULT_VOLUME))
-	set_music_volume(data["sound"].get("music_volume", DEFAULT_VOLUME))
-	set_speech_volume(data["sound"].get("speech_volume", DEFAULT_VOLUME))
+	if data.has("sound"):
+		set_master_volume(data["sound"].get("master_volume", DEFAULT_VOLUME))
+		set_sfx_volume(data["sound"].get("sfx_volume", DEFAULT_VOLUME))
+		set_music_volume(data["sound"].get("music_volume", DEFAULT_VOLUME))
+		set_speech_volume(data["sound"].get("speech_volume", DEFAULT_VOLUME))
 	
-	var actions = InputMap.get_actions()
-	for action in actions:
-		if action.begins_with("ui_") \
-			or action.begins_with("system_") \
-			or not data["actions"].has(action):
-			continue;
-		
-		
-		InputMap.action_erase_events(action)
-		
-		var scancode = data["actions"][action]
-		if scancode == null:
-			continue
-		
-		var event = InputEventKey.new();
-		event.scancode = scancode
-		InputMap.action_add_event(action, event)
+	if data.has("video"):
+		set_fullscreen(data["video"].get("fullscreen", true))
+		particles = data["video"].get("particles", true)	
+	
+	if data.has("actions"):
+		var actions = InputMap.get_actions()
+		for action in actions:
+			if action.begins_with("ui_") \
+				or action.begins_with("system_") \
+				or not data["actions"].has(action):
+				continue;
+			
+			
+			InputMap.action_erase_events(action)
+			
+			var scancode = data["actions"][action]
+			if scancode == null:
+				continue
+			
+			var event = InputEventKey.new();
+			event.scancode = scancode
+			InputMap.action_add_event(action, event)

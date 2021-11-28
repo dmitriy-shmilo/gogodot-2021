@@ -10,6 +10,8 @@ onready var _keybinding_popup = $KeyBindingPopup
 onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider"
 onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider"
 onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider"
+onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/Fullscreen/FullscreenCheckbox"
+onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/Particles/ParticlesCheckbox"
 
 var _current_binding_button: KeyBindingButton = null
 
@@ -17,17 +19,24 @@ func _ready() -> void:
 	_prepare_tabs()
 	_prepare_keybindings()
 	_prepare_volume()
+	_prepare_video()
 
 
 func _prepare_tabs() -> void:
 	_tab_container.set_tab_title(0, tr("ui_sound_settings"))
 	_tab_container.set_tab_title(1, tr("ui_key_bindings"))
+	_tab_container.set_tab_title(2, tr("ui_video_settings"))
 
 
 func _prepare_volume() -> void:
 	_master_volume_slider.value = Settings.master_volume
 	_sfx_volume_slider.value = Settings.sfx_volume
 	_music_volume_slider.value = Settings.music_volume
+
+
+func _prepare_video() -> void:
+	_fullscreen_checkbox.pressed = Settings.fullscreen
+	_particles_checkbox.pressed = Settings.particles
 
 
 func _prepare_keybindings() -> void:
@@ -87,3 +96,10 @@ func _on_KeyBindingPopup_action_remapped(action, event) -> void:
 	_current_binding_button.refresh_label()
 	_keybinding_popup.hide()
 
+
+func _on_FullscreenCheckbox_toggled(button_pressed: bool) -> void:
+	Settings.fullscreen = button_pressed
+
+
+func _on_ParticlesCheckbox_toggled(button_pressed: bool) -> void:
+	Settings.particles = button_pressed

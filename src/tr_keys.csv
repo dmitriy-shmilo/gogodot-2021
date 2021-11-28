@@ -1,10 +1,13 @@
 key,en,ru
 ui_key_none,No Key,Нет Клавиши
+ui_video_settings,Video,Видео
 ui_sound_settings,Sound Settings,Звук
 ui_key_bindings,Key Bindings,Управление
 ui_master_volume,Master,Общий
 ui_music_volume,Music,Музыка
 ui_sfx_volume,SFX,Эффекты
+ui_particles,Particles,Частицы
+ui_fullscreen,Fullscreen,Полный экран
 ui_speech_volume,Speech,Голос
 ui_start,Start,Старт
 ui_settings,Settings,Настройки
