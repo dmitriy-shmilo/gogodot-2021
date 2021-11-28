@@ -1,10 +1,101 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game_over_screen/game_over_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/game_over.ogg" type="AudioStream" id=4]
 
-[node name="GameOverScreen" type="VBoxContainer"]
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SceneFader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SoundtrackPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SceneFader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SoundtrackPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SceneFader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SoundtrackPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
+[node name="Background" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
 anchor_top = 0.00115601
 anchor_right = 1.0
 anchor_bottom = 1.00116
@@ -13,39 +104,57 @@ margin_top = 100.0
 margin_right = -100.0
 margin_bottom = -100.0
 theme = ExtResource( 3 )
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="Message" type="RichTextLabel" parent="Container"]
 margin_right = 440.0
-margin_bottom = 13.0
-size_flags_vertical = 2
-text = "Game Over :("
-align = 1
+margin_bottom = 14.0
+bbcode_enabled = true
+bbcode_text = "ui_highscore"
+text = "ui_highscore"
+fit_content_height = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 135.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Container"]
+margin_top = 18.0
 margin_right = 440.0
-margin_bottom = 160.0
+margin_bottom = 43.0
 alignment = 1
 
-[node name="QuitButton" type="Button" parent="HBoxContainer"]
-margin_left = 134.0
-margin_right = 202.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 50, 0 )
-shortcut_in_tooltip = false
-shortcut = ExtResource( 2 )
-text = "Quit"
-
-[node name="RetryButton" type="Button" parent="HBoxContainer"]
-margin_left = 206.0
-margin_right = 306.0
+[node name="QuitButton" type="Button" parent="Container/HBoxContainer"]
+margin_left = 118.0
+margin_right = 218.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 100, 0 )
-text = "Retry"
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = "ui_quit"
 
-[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[node name="RetryButton" type="Button" parent="Container/HBoxContainer"]
+margin_left = 222.0
+margin_right = 322.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 100, 0 )
+text = "ui_retry"
+
+[node name="SceneFader" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/fade_in = SubResource( 2 )
+anims/fade_out = SubResource( 3 )
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[connection signal="pressed" from="Container/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Container/HBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
