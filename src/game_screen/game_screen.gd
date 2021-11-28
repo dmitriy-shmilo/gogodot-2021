@@ -13,6 +13,7 @@ onready var _pause_container: ColorRect = $"Gui/CanvasLayer/PauseContainer"
 onready var _camera_body: KinematicBody2D = $"Camera"
 onready var _gui: Gui = $"Gui"
 onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
+onready var _transition_player: AnimationPlayer = $"TransitionPlayer"
 
 var _current_soundtrack = 0
 var _levels = [
@@ -22,6 +23,7 @@ var _current_level: Level = null
 
 func _ready() -> void:
 	MenuMusic.stop()
+	_transition_player.play("fade_in")
 	_load_level(current_level_index)
 	_soundtrack_player.stream = SOUNDTRACK_STREAMS[_current_soundtrack]
 	_soundtrack_player.play()
@@ -68,6 +70,8 @@ func _level_score_changed(_level, amount, total):
 func _level_health_changed(_level, amount, total):
 	_gui.set_health(total, amount)
 	if amount <= 0:
+		_transition_player.play("fade_out")
+		yield(_transition_player, "animation_finished")
 		get_tree().change_scene("res://game_over_screen/game_over_screen.tscn")
 
 
