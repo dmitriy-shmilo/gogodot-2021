@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game_over_screen/game_over_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/game_over.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/game_over.png" type="Texture" id=5]
+[ext_resource path="res://ui/font_large.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -108,18 +110,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="RichTextLabel" parent="Container"]
+[node name="Title" type="Label" parent="Container"]
 margin_right = 440.0
-margin_bottom = 14.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 6 )
+text = "ui_game_over"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+margin_top = 30.0
+margin_right = 440.0
+margin_bottom = 78.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="Message" type="RichTextLabel" parent="Container"]
+margin_top = 82.0
+margin_right = 440.0
+margin_bottom = 96.0
 bbcode_enabled = true
 bbcode_text = "ui_highscore"
 text = "ui_highscore"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container"]
-margin_top = 18.0
+margin_top = 100.0
 margin_right = 440.0
-margin_bottom = 43.0
+margin_bottom = 125.0
 alignment = 1
 
 [node name="QuitButton" type="Button" parent="Container/HBoxContainer"]
@@ -139,6 +156,7 @@ rect_min_size = Vector2( 100, 0 )
 text = "ui_retry"
 
 [node name="SceneFader" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

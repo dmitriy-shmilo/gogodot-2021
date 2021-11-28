@@ -15,7 +15,8 @@ ui_back,Back,Назад
 ui_retry,Retry,Еще раз
 ui_continue,Continue,Продолжить
 ui_pause,Pause,Пауза
-ui_highscore_achieved,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b], which is your highest score","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b], и это новый рекорд.[/center]"
+ui_game_over,Game Over,Конец Игры
+ui_highscore_achieved,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b], which is your highest score.","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b], и это новый рекорд.[/center]"
 ui_highscore,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b]. Your highest score ever was [b]{1}[/b].[/center]","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b]. Ваш рекорд был [b]{1}[/b].[/center]"
 ui_credits_text,"[color=black][font=res://ui/font_large.tres]SFX[/font]
 - [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing][/url] by mnslugger20
