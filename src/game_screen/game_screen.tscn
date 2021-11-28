@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://game_screen/gui.gd" type="Script" id=5]
 [ext_resource path="res://assets/ui.png" type="Texture" id=6]
 [ext_resource path="res://ui/health_bar.tres" type="Theme" id=7]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=8]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 6 )
@@ -152,6 +153,8 @@ text = "ui_quit"
 margin_left = 246.0
 margin_right = 356.0
 margin_bottom = 25.0
+shortcut_in_tooltip = false
+shortcut = ExtResource( 8 )
 text = "ui_continue"
 
 [node name="EnergyBar" type="ProgressBar" parent="Gui/CanvasLayer"]
