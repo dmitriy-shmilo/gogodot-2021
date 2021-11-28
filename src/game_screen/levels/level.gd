@@ -2,15 +2,17 @@ extends Node2D
 class_name Level
 
 signal energy_changed(level, amount, total)
+signal score_changed(level, amount, total)
+signal health_changed(level, amount, total)
 
 export(float) var total_energy = 5
 export(float) var current_energy = 5
 
-onready var _core: Node2D = $"PlayerCore"
-onready var _spawner: Node2D = $"EnemySpawner"
-onready var _tilemap: TileMapMesh = $"Walls"
+onready var _core: PlayerCore = $"PlayerCore"
+onready var _tilemap: TileMapMesh = $"Obstacles"
 
 var _towers: Array
+var _score: float
 
 func _ready() -> void:
 	_towers = get_tree().get_nodes_in_group("PlayerTower")
@@ -21,6 +23,7 @@ func setup() -> void:
 		tower.connect("activity_changed", self, "_tower_activity_changed")
 
 	emit_signal("energy_changed", self, current_energy, total_energy)
+	emit_signal("health_changed", self, _core.current_hitpoints, _core.total_hitpoints)
 	_tilemap.setup()
 	
 	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
@@ -48,3 +51,9 @@ func _tower_activity_changed(tower, is_active) -> void:
 func _on_Timer_timeout() -> void:
 	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
 		spawner.spawn_next()
+
+
+func _on_ScoreTimer_timeout() -> void:
+	var delta = floor(_core.current_hitpoints / 10.0)
+	_score += delta
+	emit_signal("score_changed", self, delta, _score)

@@ -26,17 +26,27 @@ func _load_level(index: int) -> void:
 	if _current_level != null:
 		_current_level.teardown()
 		remove_child(_current_level)
-	
+
 	_current_level = _levels[index].instance() as Level
 	add_child(_current_level)
 
 	_camera_body.position = _current_level.get_start_position()
 	var _err = _current_level.connect("energy_changed", self, "_level_energy_changed")
+	_err = _current_level.connect("score_changed", self, "_level_score_changed")
+	_err = _current_level.connect("health_changed", self, "_level_health_changed")
 	_current_level.setup()
 
 
 func _level_energy_changed(_level, current_energy, total_energy):
 	_gui.set_energy(current_energy, total_energy)
+
+
+func _level_score_changed(_level, amount, total):
+	_gui.set_score(total, amount)
+
+
+func _level_health_changed(_level, amount, total):
+	_gui.set_health(total, amount)
 
 
 func _on_QuitButton_pressed() -> void:

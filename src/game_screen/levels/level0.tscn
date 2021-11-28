@@ -22,7 +22,7 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="Walls" type="TileMap" parent="."]
+[node name="Obstacles" type="TileMap" parent="."]
 visible = false
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
@@ -163,4 +163,9 @@ texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
 
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
