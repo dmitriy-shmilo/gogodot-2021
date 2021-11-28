@@ -5,7 +5,7 @@ const SOUNDTRACK_STREAMS = [
 	preload("res://assets/music2.mp3"),
 	preload("res://assets/music3.mp3")
 ]
-const PAUSE_VOLUME_MOD = -15.0
+const PAUSE_VOLUME_MOD = -10.0
 
 export(int) var current_level_index = 0
 
@@ -22,6 +22,7 @@ var _levels = [
 var _current_level: Level = null
 
 func _ready() -> void:
+	SOUNDTRACK_STREAMS.shuffle()
 	MenuMusic.stop()
 	Globals.game_state = Globals.GameState.RUNNING
 	_transition_player.play("fade_in")
