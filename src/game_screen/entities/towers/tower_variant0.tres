@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game_screen/entities/towers/player_tower_variant.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+damage = 25.0
+attack_rate = 5.0
+energy_cost = 1.0
+attack_range = 120.0
+sprite_index = 0

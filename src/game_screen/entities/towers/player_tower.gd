@@ -10,35 +10,35 @@ enum TowerState {
 
 signal activity_changed(source, is_active)
 
-export(float) var damage = 40
-export(float) var attack_rate = 1
-export(float) var energy = 20
-export(float) var attack_range = 100
+export(Resource) var variant = preload("res://game_screen/entities/towers/tower_variant0.tres")
 export(Color) var range_color = Color.cornflower
 
 onready var _tower_container: Node2D = $"TowerContainer"
 onready var _range_area: Area2D = $"RangeArea"
 onready var _range_shape: CollisionShape2D = $"RangeArea/RangeShape"
+onready var _attack_timer: Timer = $"AttackTimer"
 onready var _base_sprite: Sprite = $"BaseSprite"
 onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
 onready var _power_indicator: AnimatedSprite = $"PowerIndicator"
 onready var _shot_animation: AnimatedSprite = $"TowerContainer/ShotAnimation"
 
 var _target: EnemyUnit = null
+var _bullet_loaded = true
 var _state = TowerState.INACTIVE
 var _is_hovered_over = false
 
 func _ready() -> void:
-	var sprite_index = randi() % 2
+	var sprite_index = variant.sprite_index
 	_base_sprite.region_rect.position.y = sprite_index * 64
 	_tower_sprite.region_rect.position.y = sprite_index * 64
-	_shot_animation.animation = "Shot" + str(sprite_index)
+	_shot_animation.animation = "shot" + str(sprite_index)
+	_attack_timer.wait_time = 1.0 / variant.attack_rate 
 	_toggle_active(false)
 
 
 func _draw() -> void:
 	if _is_hovered_over:
-		draw_circle(Vector2.ZERO, attack_range, range_color)
+		draw_circle(Vector2.ZERO, variant.attack_range, range_color)
 
 
 func _physics_process(delta: float) -> void:
@@ -54,11 +54,19 @@ func _physics_process(delta: float) -> void:
 			else:
 				_target = null
 		TowerState.ATTACKING:
+			if not _bullet_loaded:
+				# wait for reload
+				return
+
 			if _target == null or not _target.is_threat():
 				_retarget()
 			else:
+				_bullet_loaded = false
 				_tower_container.look_at(_target.global_position)
-				_target.receive_damage(self, damage * delta)
+				_shot_animation.play("shot" + str(variant.sprite_index))
+				_shot_animation.visible = true
+				_target.receive_damage(self, variant.damage)
+				_attack_timer.start()
 
 
 func _retarget() -> void:
@@ -92,7 +100,6 @@ func _toggle_active(active: bool) -> void:
 		_power_indicator.visible = false
 		return
 
-	_shot_animation.visible = false
 	_power_indicator.visible = true
 	modulate = Color.darkgray
 	_move_to_state(TowerState.INACTIVE)
@@ -124,15 +131,13 @@ func _move_to_state(state: int) -> void:
 	
 	match state:
 		TowerState.ATTACKING:
-			_shot_animation.visible = true
+			if _attack_timer.is_stopped():
+				_attack_timer.start()
 		TowerState.INACTIVE, TowerState.DEAD:
 			_range_shape.call_deferred("set_disabled", true)
 			emit_signal("activity_changed", self, false)
-			_shot_animation.visible = false
-			_shot_animation.frame = 0
 		TowerState.IDLE:
 			_range_shape.call_deferred("set_disabled", false)
-			_shot_animation.visible = false
 			if old_state == TowerState.INACTIVE:
 				emit_signal("activity_changed", self, true)
 
@@ -166,3 +171,14 @@ func _on_ClickArea_mouse_entered() -> void:
 func _on_ClickArea_mouse_exited() -> void:
 	_is_hovered_over = false
 	update()
+
+
+func _on_AttackTimer_timeout() -> void:
+	_bullet_loaded = true
+
+
+func _on_ShotAnimation_animation_finished() -> void:
+	if not _bullet_loaded or _state != TowerState.ATTACKING:
+		_shot_animation.stop()
+		_shot_animation.frame = 0
+		_shot_animation.visible = false

@@ -3,8 +3,8 @@ class_name Level
 
 signal energy_changed(level, amount, total)
 
-export(float) var total_energy = 100
-export(float) var current_energy = 100
+export(float) var total_energy = 5
+export(float) var current_energy = 5
 
 onready var _core: Node2D = $"PlayerCore"
 onready var _spawner: Node2D = $"EnemySpawner"
@@ -38,9 +38,9 @@ func get_start_position() -> Vector2:
 
 func _tower_activity_changed(tower, is_active) -> void:
 	if is_active:
-		current_energy -= tower.energy
+		current_energy -= tower.variant.energy_cost
 	else:
-		current_energy += tower.energy
+		current_energy += tower.variant.energy_cost
 
 	emit_signal("energy_changed", self, current_energy, total_energy)
 

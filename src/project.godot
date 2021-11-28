@@ -47,7 +47,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "PlayerTower",
 "language": "GDScript",
-"path": "res://game_screen/entities/player_tower.gd"
+"path": "res://game_screen/entities/towers/player_tower.gd"
+}, {
+"base": "Resource",
+"class": "PlayerTowerVariant",
+"language": "GDScript",
+"path": "res://game_screen/entities/towers/player_tower_variant.gd"
 }, {
 "base": "TileMap",
 "class": "TileMapMesh",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "Level": "",
 "PlayerCore": "",
 "PlayerTower": "",
+"PlayerTowerVariant": "",
 "TileMapMesh": ""
 }
 
