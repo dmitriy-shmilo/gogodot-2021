@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=2]
+[gd_resource type="Theme" load_steps=33 format=2]
 
 [ext_resource path="res://assets/ui.png" type="Texture" id=1]
 [ext_resource path="res://assets/monogram-extended.ttf" type="DynamicFontData" id=2]
@@ -36,6 +36,26 @@ margin_left = 22.0
 margin_right = 22.0
 margin_top = 8.0
 margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 16, 16, 16 )
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
 
 [sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 1 )
@@ -155,6 +175,14 @@ Button/styles/focus = SubResource( 5 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = SubResource( 2 )
+CheckBox/icons/checked = SubResource( 26 )
+CheckBox/icons/unchecked = SubResource( 33 )
+CheckBox/styles/disabled = SubResource( 27 )
+CheckBox/styles/focus = SubResource( 28 )
+CheckBox/styles/hover = SubResource( 29 )
+CheckBox/styles/hover_pressed = SubResource( 30 )
+CheckBox/styles/normal = SubResource( 31 )
+CheckBox/styles/pressed = SubResource( 32 )
 HSeparator/styles/separator = SubResource( 20 )
 HSlider/icons/grabber = SubResource( 18 )
 HSlider/icons/grabber_highlight = SubResource( 19 )
