@@ -178,7 +178,7 @@ zoom_out={
 [locale]
 
 locale_filter=[ 1, [ "en", "ru", "uk" ] ]
-translations=PoolStringArray( "res://tr_keys.en.translation" )
+translations=PoolStringArray( "res://tr_keys.en.translation", "res://tr_keys.ru.translation" )
 
 [rendering]
 
