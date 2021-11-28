@@ -5,6 +5,7 @@
 - [30-30 Lever Rifle Gunshot 2](https://freesound.org/people/Erokia/sounds/410400/) by Erokia
 
 ## Music ##
+- [Tragic ambient main menu](https://opengameart.org/content/tragic-ambient-main-menu) by brandon75689
 - [Dream Raid](https://opengameart.org/content/dream-raid-cinematic-action-soundtrack) by [Matthew Pablo](http://www.matthewpablo.com/)
 - [Wasteland Overdrive](https://opengameart.org/content/wasteland-overdrive) by [Matthew Pablo](http://www.matthewpablo.com/)
 - [Imminent Threat](https://opengameart.org/content/imminent-threat) by [Matthew Pablo](http://www.matthewpablo.com/)

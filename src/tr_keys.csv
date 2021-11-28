@@ -11,11 +11,45 @@ ui_settings,Settings,Настройки
 ui_credits,Credits,Благодарности
 ui_tutorial,How To Play,Как играть
 ui_quit,Quit,Выход
+ui_back,Back,Назад
 ui_retry,Retry,Еще раз
 ui_continue,Continue,Продолжить
 ui_pause,Pause,Пауза
 ui_highscore_achieved,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b], which is your highest score","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b], и это новый рекорд.[/center]"
 ui_highscore,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b]. Your highest score ever was [b]{1}[/b].[/center]","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b]. Ваш рекорд был [b]{1}[/b].[/center]"
+ui_credits_text,"[color=black][font=res://ui/font_large.tres]SFX[/font]
+- [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing][/url] by mnslugger20
+- [url=https://freesound.org/people/Erokia/sounds/410400/]30-30 Lever Rifle Gunshot 2[/url] by Erokia
+
+[font=res://ui/font_large.tres]Music[/font]
+- [url=https://opengameart.org/content/tragic-ambient-main-menu]Tragic ambient main menu[/url] by brandon75689
+- [url=https://opengameart.org/content/dream-raid-cinematic-action-soundtrack]Dream Raid[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/wasteland-overdrive]Wasteland Overdrive[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/imminent-threat]Imminent Threat[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/the-fall-of-arcana-epic-game-theme-music]The Fall of Arcana[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+
+[font=res://ui/font_large.tres]Art[/font]
+- [url=https://github.com/dmitriy-shmilo]Dmitriy Shmilo[/url]
+- [url=https://www.artstation.com/i_bahachuk]Irene Bagachuk[/url]
+
+[font=res://ui/font_large.tres]Code[/font]
+- [url=https://github.com/dmitriy-shmilo]Dmitriy Shmilo[/url][/color]\n","[color=black][font=res://ui/font_large.tres]Звук[/font]
+- [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing][/url] by mnslugger20
+- [url=https://freesound.org/people/Erokia/sounds/410400/]30-30 Lever Rifle Gunshot 2[/url] by Erokia\n
+
+[font=res://ui/font_large.tres]Музыка[/font]
+- [url=https://opengameart.org/content/tragic-ambient-main-menu]Tragic ambient main menu[/url] by brandon75689
+- [url=https://opengameart.org/content/dream-raid-cinematic-action-soundtrack]Dream Raid[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/wasteland-overdrive]Wasteland Overdrive[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/imminent-threat]Imminent Threat[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/the-fall-of-arcana-epic-game-theme-music]The Fall of Arcana[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+
+[font=res://ui/font_large.tres]Арт[/font]
+- [url=https://github.com/dmitriy-shmilo]Dmitriy Shmilo[/url]
+- [url=https://www.artstation.com/i_bahachuk]Irene Bagachuk[/url]
+
+[font=res://ui/font_large.tres]Код[/font]
+- [url=https://github.com/dmitriy-shmilo]Dmitriy Shmilo[/url][/color]\n"
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево
