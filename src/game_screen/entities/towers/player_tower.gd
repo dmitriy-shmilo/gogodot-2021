@@ -86,13 +86,15 @@ func _physics_process(delta: float) -> void:
 
 func toggle_active(active: bool) -> void:
 	if active:
-		modulate = Color.white
+		_tower_sprite.modulate = Color.white
+		_base_sprite.modulate = Color.white
 		_move_to_state(TowerState.IDLE)
 		_power_indicator.visible = false
 		return
 
 	_power_indicator.visible = true
-	modulate = Color(0.3, 0.3, 0.3)
+	_tower_sprite.modulate = Color(0.3, 0.3, 0.3)
+	_base_sprite.modulate = Color(0.3, 0.3, 0.3)
 	_move_to_state(TowerState.INACTIVE)
 
 

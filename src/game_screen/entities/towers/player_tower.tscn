@@ -71,17 +71,17 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 14.638, 15.039 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
+region = Rect2( 96, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 24, 8, 8 )
+region = Rect2( 112, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "default",
 "speed": 1.0
@@ -134,9 +134,8 @@ shape = SubResource( 2 )
 
 [node name="PowerIndicator" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 25.7153, -16.7432 )
+position = Vector2( 29.8344, -22.4642 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="AttackTimer" type="Timer" parent="."]
