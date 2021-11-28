@@ -69,5 +69,6 @@ func _physics_process(_delta) -> void:
 
 
 func _zoom(level: float) -> void:
+	level = clamp(level, 0.5, 3.0)
 	_camera.zoom.x = level
 	_camera.zoom.y = level
