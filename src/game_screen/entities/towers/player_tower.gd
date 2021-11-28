@@ -1,6 +1,11 @@
 extends Node2D
 class_name PlayerTower
 
+const SHOT_STREAMS = [
+	preload("res://assets/shot0.ogg"),
+	preload("res://assets/shot1.ogg")
+]
+
 enum TowerState {
 	INACTIVE,
 	IDLE,
@@ -21,6 +26,7 @@ onready var _base_sprite: Sprite = $"BaseSprite"
 onready var _tower_sprite: Sprite = $"TowerContainer/TowerSprite"
 onready var _power_indicator: AnimatedSprite = $"PowerIndicator"
 onready var _shot_animation: AnimatedSprite = $"TowerContainer/ShotAnimation"
+onready var _shot_player: AudioStreamPlayer2D = $"ShotPlayer"
 
 var _target: EnemyUnit = null
 var _bullet_loaded = true
@@ -35,6 +41,7 @@ func _ready() -> void:
 	# TODO: for some reason animation has to 
 	# play at least once before it's displayed
 	_shot_animation.play()
+	_shot_player.stream = SHOT_STREAMS[sprite_index]
 	_attack_timer.wait_time = 1.0 / variant.attack_rate
 	(_range_shape.shape as CircleShape2D).radius = variant.attack_range
 	_toggle_active(false)
@@ -71,6 +78,8 @@ func _physics_process(delta: float) -> void:
 				_bullet_loaded = false
 				_shot_animation.visible = true
 				_shot_animation.play()
+				if not _shot_player.playing:
+					_shot_player.play()
 				_target.receive_damage(self, variant.damage)
 				_attack_timer.start()
 
@@ -107,7 +116,7 @@ func _toggle_active(active: bool) -> void:
 		return
 
 	_power_indicator.visible = true
-	modulate = Color.darkgray
+	modulate = Color(0.3, 0.3, 0.3)
 	_move_to_state(TowerState.INACTIVE)
 
 
@@ -188,3 +197,7 @@ func _on_ShotAnimation_animation_finished() -> void:
 		_shot_animation.stop()
 		_shot_animation.frame = 0
 		_shot_animation.visible = false
+
+
+func _on_ShotPlayer_finished() -> void:
+	pass
