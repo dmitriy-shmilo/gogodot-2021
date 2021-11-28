@@ -19,3 +19,8 @@ visible = false
 points = PoolVector2Array( -1.38748, 1.7433 )
 width = 1.0
 default_color = Color( 0.996078, 1, 0.4, 1 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

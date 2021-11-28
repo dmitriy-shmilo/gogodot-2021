@@ -57,10 +57,6 @@ func _spawner_core_damaged(_unit, damage):
 	_core.current_hitpoints -= damage
 	emit_signal("health_changed", self, _core.current_hitpoints, _core.total_hitpoints)
 
-func _on_Timer_timeout() -> void:
-	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
-		spawner.spawn_next()
-
 
 func _on_ScoreTimer_timeout() -> void:
 	var delta = floor(_core.current_hitpoints / 10.0)
