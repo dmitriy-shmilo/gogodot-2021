@@ -23,6 +23,7 @@ var _current_level: Level = null
 
 func _ready() -> void:
 	MenuMusic.stop()
+	Globals.game_state = Globals.GameState.RUNNING
 	_transition_player.play("fade_in")
 	_load_level(current_level_index)
 	_soundtrack_player.stream = SOUNDTRACK_STREAMS[_current_soundtrack]

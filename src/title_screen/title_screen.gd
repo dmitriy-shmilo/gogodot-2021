@@ -1,9 +1,13 @@
 extends Control
 
 
-onready var _quit_button = $VBoxContainer/QuitButton
-
+onready var _quit_button = $"VBoxContainer/QuitButton"
+onready var _transition_player = $"TransitionPlayer"
 func _ready() -> void:
+	if Globals.game_state != Globals.GameState.TITLE_SCREEN:
+		_transition_player.play("fade_in")
+		Globals.game_state = Globals.GameState.TITLE_SCREEN
+
 	_quit_button.visible = not OS.has_feature("HTML5")
 	Settings.load_settings()
 	if not MenuMusic.playing:
@@ -30,5 +34,6 @@ func _on_SettingsButton_pressed() -> void:
 
 
 func _on_NewGameButton_pressed() -> void:
+	_transition_player.play("fade_out")
 	var err = get_tree().change_scene("res://game_screen/game_screen.tscn")
 	ErrorHandler.handle(err)
