@@ -9,7 +9,6 @@ onready var _keybindings_grid = $"VBoxContainer/PanelContainer/TabContainer/KeyB
 onready var _keybinding_popup = $KeyBindingPopup
 onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume/VolumeSlider"
 onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume/VolumeSlider"
-onready var _speech_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume/VolumeSlider"
 onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume/VolumeSlider"
 
 var _current_binding_button: KeyBindingButton = null
@@ -27,7 +26,6 @@ func _prepare_tabs() -> void:
 
 func _prepare_volume() -> void:
 	_master_volume_slider.value = Settings.master_volume
-	_speech_volume_slider.value = Settings.speech_volume
 	_sfx_volume_slider.value = Settings.sfx_volume
 	_music_volume_slider.value = Settings.music_volume
 
@@ -60,10 +58,6 @@ func _on_MusicVolumeSlider_value_changed(value) -> void:
 
 func _on_SfxVolumeSlider_value_changed(value) -> void:
 	Settings.sfx_volume = value
-
-
-func _on_SpeechVolumeSlider_value_changed(value) -> void:
-	Settings.speech_volume = value
 
 
 func _on_BackButton_pressed() -> void:

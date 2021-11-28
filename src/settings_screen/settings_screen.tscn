@@ -44,102 +44,81 @@ __meta__ = {
 }
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 536.0
-margin_bottom = 266.0
+margin_left = 6.62864
+margin_top = 6.12836
+margin_right = 537.122
+margin_bottom = 266.621
 
 [node name="SoundSettings" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 31.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 7.38271
+margin_top = 30.1325
+margin_right = -5.88115
+margin_bottom = -6.5068
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 74.0
-margin_right = 521.0
-margin_bottom = 90.0
+margin_top = 83.0
+margin_right = 517.0
+margin_bottom = 99.0
 alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
-margin_left = 162.0
-margin_right = 258.0
+margin_left = 160.0
+margin_right = 256.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_master_volume"
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
-margin_left = 262.0
-margin_right = 462.0
+margin_left = 260.0
+margin_right = 460.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
 [node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 94.0
-margin_right = 521.0
-margin_bottom = 110.0
+margin_top = 103.0
+margin_right = 517.0
+margin_bottom = 119.0
 alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
-margin_left = 168.0
-margin_right = 258.0
+margin_left = 166.0
+margin_right = 256.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_music_volume"
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
-margin_left = 262.0
-margin_right = 462.0
+margin_left = 260.0
+margin_right = 460.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
 [node name="SfxVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 114.0
-margin_right = 521.0
-margin_bottom = 130.0
+margin_top = 123.0
+margin_right = 517.0
+margin_bottom = 139.0
 alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
-margin_left = 180.0
-margin_right = 258.0
+margin_left = 178.0
+margin_right = 256.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_sfx_volume"
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
-margin_left = 262.0
-margin_right = 462.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 200, 0 )
-size_flags_horizontal = 2
-
-[node name="SpeechVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 134.0
-margin_right = 521.0
-margin_bottom = 150.0
-alignment = 1
-
-[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume"]
-margin_left = 162.0
-margin_right = 258.0
-margin_bottom = 16.0
-size_flags_horizontal = 10
-size_flags_vertical = 1
-text = "ui_speech_volume"
-
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume"]
-margin_left = 262.0
-margin_right = 462.0
+margin_left = 260.0
+margin_right = 460.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
@@ -154,9 +133,9 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
-margin_left = 260.0
+margin_left = 261.0
 margin_top = 112.0
-margin_right = 260.0
+margin_right = 261.0
 margin_bottom = 112.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -170,6 +149,7 @@ margin_top = 294.0
 margin_right = 305.0
 margin_bottom = 319.0
 size_flags_horizontal = 4
+shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
 text = "Back"
 
@@ -242,7 +222,6 @@ text = "Clear Binding"
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SpeechVolume/VolumeSlider" to="." method="_on_SpeechVolumeSlider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="action_remapped" from="KeyBindingPopup" to="." method="_on_KeyBindingPopup_action_remapped"]
 [connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_KeybindingCancelButton_pressed"]
