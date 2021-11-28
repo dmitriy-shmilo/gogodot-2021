@@ -3,6 +3,7 @@ class_name EnemyUnit
 
 const FINISH_RADIUS = 50
 const FINISH_DIAMETER = FINISH_RADIUS * 2
+const CORE_DAMAGE = 0.5
 const VARIANT_DISTRIBUTION = [
 	
 	# easy worms
@@ -31,6 +32,8 @@ const VARIANT_DISTRIBUTION = [
 	# stinkbugs
 	preload("res://game_screen/entities/enemies/enemy_variant4.tres"),
 ]
+
+signal core_attacked(source, damage)
 
 enum EnemyState {
 	IDLE,
@@ -169,5 +172,5 @@ func _describe_state() -> String:
 
 
 func _on_AttackTimer_timeout() -> void:
-	# TODO: damage the core
+	emit_signal("core_attacked", self, CORE_DAMAGE)
 	pass

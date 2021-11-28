@@ -28,6 +28,7 @@ func setup() -> void:
 	
 	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):
 		spawner.setup(_tilemap, _core)
+		spawner.connect("core_damaged", self, "_spawner_core_damaged")
 
 
 func teardown() -> void:
@@ -47,6 +48,10 @@ func _tower_activity_changed(tower, is_active) -> void:
 
 	emit_signal("energy_changed", self, current_energy, total_energy)
 
+
+func _spawner_core_damaged(_unit, damage):
+	_core.current_hitpoints -= damage
+	emit_signal("health_changed", self, _core.current_hitpoints, _core.total_hitpoints)
 
 func _on_Timer_timeout() -> void:
 	for spawner in get_tree().get_nodes_in_group("EnemySpawner"):

@@ -15,6 +15,6 @@ func set_score(total, amount = 0):
 	_score_label.text = "x" + str(total)
 
 
-func set_health(current, total):
+func set_health(total, current):
 	_health_bar.max_value = total
 	_health_bar.value = current
