@@ -7,9 +7,9 @@ const KeyBindingLabelScene = preload("res://settings_screen/keybinding_label.tsc
 onready var _tab_container = $"VBoxContainer/PanelContainer/TabContainer"
 onready var _keybindings_grid = $"VBoxContainer/PanelContainer/TabContainer/KeyBindings/GridContainer"
 onready var _keybinding_popup = $KeyBindingPopup
-onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume/VolumeSlider"
-onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume/VolumeSlider"
-onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume/VolumeSlider"
+onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider"
+onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider"
+onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider"
 
 var _current_binding_button: KeyBindingButton = null
 
@@ -33,11 +33,8 @@ func _prepare_volume() -> void:
 func _prepare_keybindings() -> void:
 	var actions = ["up", "down", "left", "right", "zoom_in", "zoom_out"]
 	for action in actions:
-		if action.begins_with("ui_") or action.begins_with("system_"):
-			continue;
-
 		var label = KeyBindingLabelScene.instance()
-		label.text = action
+		label.text = tr("key_" + action)
 		var button = KeyBindingButtonScene.instance()
 		button.action = action
 		button.connect("pressed", \

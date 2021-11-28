@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://assets/ui.png" type="Texture" id=1]
 [ext_resource path="res://assets/monogram-extended.ttf" type="DynamicFontData" id=2]
@@ -37,6 +37,10 @@ margin_right = 22.0
 margin_top = 8.0
 margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 1 )
+region_rect = Rect2( 48, 64, 16, 2 )
+
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 48, 16, 16 )
@@ -66,6 +70,12 @@ margin_top = 6.12836
 margin_bottom = 6.3785
 
 [sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 1 )
+region_rect = Rect2( 48, 32, 16, 16 )
+margin_left = 5.76008
+margin_right = 5.8853
+margin_top = 6.76183
+margin_bottom = 6.01052
 
 [sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 1 )
@@ -103,6 +113,7 @@ Button/styles/focus = SubResource( 5 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = SubResource( 2 )
+HSeparator/styles/separator = SubResource( 20 )
 HSlider/icons/grabber = SubResource( 18 )
 HSlider/icons/grabber_highlight = SubResource( 19 )
 HSlider/styles/grabber_area = SubResource( 15 )

@@ -49,76 +49,86 @@ margin_top = 6.12836
 margin_right = 537.122
 margin_bottom = 266.621
 
-[node name="SoundSettings" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+[node name="SoundSettings" type="Control" parent="VBoxContainer/PanelContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.38271
 margin_top = 30.1325
 margin_right = -5.88115
 margin_bottom = -6.5068
-size_flags_horizontal = 3
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -28.0
+margin_right = 150.0
+margin_bottom = 28.0
 size_flags_vertical = 3
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 83.0
-margin_right = 517.0
-margin_bottom = 99.0
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_right = 300.0
+margin_bottom = 16.0
 alignment = 1
 
-[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
-margin_left = 160.0
-margin_right = 256.0
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume"]
+margin_right = 96.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_master_volume"
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume"]
-margin_left = 260.0
-margin_right = 460.0
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume"]
+margin_left = 100.0
+margin_right = 300.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
-[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 103.0
-margin_right = 517.0
-margin_bottom = 119.0
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 36.0
 alignment = 1
 
-[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
-margin_left = 166.0
-margin_right = 256.0
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume"]
+margin_left = 6.0
+margin_right = 96.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_music_volume"
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume"]
-margin_left = 260.0
-margin_right = 460.0
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume"]
+margin_left = 100.0
+margin_right = 300.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
-[node name="SfxVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
-margin_top = 123.0
-margin_right = 517.0
-margin_bottom = 139.0
+[node name="SfxVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_top = 40.0
+margin_right = 300.0
+margin_bottom = 56.0
 alignment = 1
 
-[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
-margin_left = 178.0
-margin_right = 256.0
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume"]
+margin_left = 18.0
+margin_right = 96.0
 margin_bottom = 16.0
 size_flags_horizontal = 10
 size_flags_vertical = 1
 text = "ui_sfx_volume"
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume"]
-margin_left = 260.0
-margin_right = 460.0
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume"]
+margin_left = 100.0
+margin_right = 300.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
@@ -127,16 +137,16 @@ size_flags_horizontal = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 31.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 7.38271
+margin_top = 30.1325
+margin_right = -5.88115
+margin_bottom = -6.5068
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
-margin_left = 261.0
-margin_top = 112.0
-margin_right = 261.0
-margin_bottom = 112.0
+margin_left = 258.0
+margin_top = 111.0
+margin_right = 258.0
+margin_bottom = 111.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_constants/vseparation = 10
@@ -171,57 +181,52 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="KeyBindingPopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ActionLabel" type="Label" parent="KeyBindingPopup/VBoxContainer"]
-margin_top = 14.0
-margin_right = 197.0
-margin_bottom = 28.0
+margin_top = 16.0
+margin_right = 206.0
+margin_bottom = 29.0
 align = 1
 
 [node name="Label" type="Label" parent="KeyBindingPopup/VBoxContainer"]
-margin_top = 32.0
-margin_right = 197.0
+margin_top = 33.0
+margin_right = 206.0
 margin_bottom = 46.0
 text = "Press a key..."
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="KeyBindingPopup/VBoxContainer"]
 margin_top = 50.0
-margin_right = 197.0
+margin_right = 206.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="KeyBindingPopup/VBoxContainer"]
 margin_top = 74.0
-margin_right = 197.0
-margin_bottom = 94.0
+margin_right = 206.0
+margin_bottom = 99.0
 alignment = 1
 
 [node name="CancelButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
-margin_left = 21.0
-margin_right = 75.0
-margin_bottom = 20.0
+margin_right = 80.0
+margin_bottom = 25.0
 focus_mode = 0
 text = "Cancel"
 
 [node name="ClearButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
-margin_left = 79.0
-margin_right = 175.0
-margin_bottom = 20.0
+margin_left = 84.0
+margin_right = 206.0
+margin_bottom = 25.0
 focus_mode = 0
 text = "Clear Binding"
 
-[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="action_remapped" from="KeyBindingPopup" to="." method="_on_KeyBindingPopup_action_remapped"]
 [connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_KeybindingCancelButton_pressed"]

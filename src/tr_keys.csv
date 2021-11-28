@@ -6,3 +6,9 @@ ui_master_volume,Master,Общий
 ui_music_volume,Music,Музыка
 ui_sfx_volume,SFX,Эффекты
 ui_speech_volume,Speech,Голос
+key_up,Up,Вверх
+key_down,Down,Вниз
+key_left,Left,Влево
+key_right,Right,Вправо
+key_zoom_in,Zoom In,Приблизить
+key_zoom_out,Zoom Out,Отадлить
