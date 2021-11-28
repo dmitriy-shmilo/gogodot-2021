@@ -3,7 +3,7 @@ class_name EnemyUnit
 
 const FINISH_RADIUS = 50
 const FINISH_DIAMETER = FINISH_RADIUS * 2
-const CORE_DAMAGE = 0.5
+const CORE_DAMAGE = 5
 const VARIANT_DISTRIBUTION = [
 	
 	# easy worms
@@ -49,6 +49,9 @@ signal unit_killed(source, coord)
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 onready var _animated_sprite: AnimatedSprite = $"AnimatedSprite"
 onready var _attack_timer: Timer = $"AttackTimer"
+onready var _cleanup_timer: Timer = $"CleanupTimer"
+onready var _animation_player: AnimationPlayer = $"AnimationPlayer"
+onready var _death_effect: CPUParticles2D = $"DeathEffect"
 
 var _variant: EnemyUnitVariant = VARIANT_DISTRIBUTION[0]
 var _velocity = Vector2.ZERO
@@ -77,6 +80,8 @@ func receive_damage(source: Node, amount: float) -> void:
 	_current_hitpoints -= amount
 	if _current_hitpoints <= 0:
 		_move_to_state(EnemyState.DEAD)
+	if not _animation_player.is_playing():
+		_animation_player.play("damage")
 
 
 func setup(points) -> void:
@@ -161,8 +166,11 @@ func _move_to_state(state: int) -> void:
 			_attack_timer.start()
 		EnemyState.DEAD:
 			_enemy_shape.call_deferred("set_disabled", true)
-			call_deferred("queue_free")
+			_animated_sprite.stop()
+			_animated_sprite.modulate = Color(0.3, 0.3, 0.3)
+			_death_effect.restart()
 			emit_signal("unit_killed", self, _points[_target_point_index])
+			_cleanup_timer.start()
 		_:
 			_enemy_shape.call_deferred("set_disabled", false)
 
@@ -173,4 +181,8 @@ func _describe_state() -> String:
 
 func _on_AttackTimer_timeout() -> void:
 	emit_signal("core_attacked", self, CORE_DAMAGE)
-	pass
+
+
+func _on_CleanupTimer_timeout() -> void:
+	# TODO: pool node instead of deleting
+	call_deferred("queue_free")

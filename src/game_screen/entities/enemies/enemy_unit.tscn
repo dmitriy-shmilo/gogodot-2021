@@ -1,11 +1,40 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://game_screen/entities/enemies/enemy_unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/creeps.png" type="Texture" id=2]
 [ext_resource path="res://util/state_label.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/particles.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.0
+
+[sub_resource type="Shader" id=20]
+code = "shader_type canvas_item;
+
+uniform float white_progress : hint_range(0,1) = 0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta) {
+    return start + (end - start) * delta;
+}
+
+void fragment() {
+    vec4 origin = texture(TEXTURE, UV);
+    COLOR.rgb = interpolate_vec3(origin.rgb, vec3(1,1,1), white_progress);
+    COLOR.a = origin.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=24]
+resource_local_to_scene = true
+shader = SubResource( 20 )
+shader_param/white_progress = 0.0
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
@@ -31,22 +60,6 @@ region = Rect2( 32, 96, 32, 32 )
 atlas = ExtResource( 2 )
 region = Rect2( 64, 96, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 64, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 64, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
 region = Rect2( 32, 128, 32, 32 )
@@ -55,8 +68,21 @@ region = Rect2( 32, 128, 32, 32 )
 atlas = ExtResource( 2 )
 region = Rect2( 64, 128, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 32, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "creep2",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "creep0",
@@ -67,30 +93,67 @@ animations = [ {
 "name": "creep3",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "creep1",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "creep2",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "creep4",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "creep1",
+"speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:material:shader_param/white_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/white_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.5, 1.0, 0.5, 1.0, 0.5, 0.0 ]
+}
+
+[sub_resource type="Gradient" id=25]
+offsets = PoolRealArray( 0.162562, 0.694581, 1 )
+colors = PoolColorArray( 0.580392, 0.0588235, 0, 1, 0.14902, 0.0352941, 0.156863, 1, 0, 0, 0, 1 )
 
 [node name="EnemyUnit" type="KinematicBody2D" groups=["EnemyUnit"]]
 collision_mask = 0
 script = ExtResource( 1 )
-
-[node name="EnemySprite" type="Sprite" parent="."]
-visible = false
-rotation = 1.5708
-texture = ExtResource( 2 )
 
 [node name="EnemyShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -104,12 +167,40 @@ margin_right = 18.4153
 margin_bottom = -3.98109
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 24 )
 rotation = 1.5708
 frames = SubResource( 6 )
 animation = "creep0"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 22 )
+anims/damage = SubResource( 23 )
+
+[node name="DeathEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+texture = ExtResource( 4 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.3
+linear_accel = -500.0
+linear_accel_random = 0.1
+angle = 720.0
+angle_random = 1.0
+color = Color( 1, 0, 0, 1 )
+color_ramp = SubResource( 25 )
+
+[node name="CleanupTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="CleanupTimer" to="." method="_on_CleanupTimer_timeout"]
