@@ -6,6 +6,8 @@ onready var _quit_button = $VBoxContainer/QuitButton
 func _ready() -> void:
 	_quit_button.visible = not OS.has_feature("HTML5")
 	Settings.load_settings()
+	if not MenuMusic.playing:
+		MenuMusic.play()
 
 
 func _on_QuitButton_pressed() -> void:

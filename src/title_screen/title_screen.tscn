@@ -59,30 +59,10 @@ margin_bottom = 160.0
 texture = ExtResource( 1 )
 stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 164.0
 margin_right = 320.0
 margin_bottom = 189.0
-alignment = 1
-
-[node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 8.0
-margin_right = 158.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 150, 0 )
-text = "credits"
-
-[node name="TutorialButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 162.0
-margin_right = 312.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 150, 0 )
-text = "how to play"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 193.0
-margin_right = 320.0
-margin_bottom = 218.0
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
@@ -99,6 +79,26 @@ margin_bottom = 25.0
 rect_min_size = Vector2( 150, 0 )
 text = "settings"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 193.0
+margin_right = 320.0
+margin_bottom = 218.0
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 8.0
+margin_right = 158.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 150, 0 )
+text = "credits"
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 162.0
+margin_right = 312.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 150, 0 )
+text = "how to play"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_left = 85.0
 margin_top = 222.0
@@ -108,8 +108,8 @@ rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 4
 text = "quit"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

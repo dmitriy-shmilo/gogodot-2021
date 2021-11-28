@@ -110,10 +110,10 @@ func _get_data() -> Dictionary:
 
 
 func _set_from_data(data: Dictionary) -> void:
-	master_volume = data["sound"].get("master_volume", DEFAULT_VOLUME)
-	sfx_volume = data["sound"].get("sfx_volume", DEFAULT_VOLUME)
-	music_volume = data["sound"].get("music_volume", DEFAULT_VOLUME)
-	speech_volume = data["sound"].get("speech_volume", DEFAULT_VOLUME)
+	set_master_volume(data["sound"].get("master_volume", DEFAULT_VOLUME))
+	set_sfx_volume(data["sound"].get("sfx_volume", DEFAULT_VOLUME))
+	set_music_volume(data["sound"].get("music_volume", DEFAULT_VOLUME))
+	set_speech_volume(data["sound"].get("speech_volume", DEFAULT_VOLUME))
 	
 	var actions = InputMap.get_actions()
 	for action in actions:

@@ -75,13 +75,14 @@ _global_script_class_icons={
 [application]
 
 config/name="donutdefense"
-run/main_scene="res://game_screen/game_screen.tscn"
+run/main_scene="res://title_screen/title_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 ErrorHandler="*res://util/error_handler.gd"
 Settings="*res://util/settings.gd"
+MenuMusic="*res://title_screen/menu_music.tscn"
 
 [debug]
 
