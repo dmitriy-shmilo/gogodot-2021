@@ -67,6 +67,8 @@ func _level_score_changed(_level, amount, total):
 
 func _level_health_changed(_level, amount, total):
 	_gui.set_health(total, amount)
+	if amount <= 0:
+		get_tree().change_scene("res://game_over_screen/game_over_screen.tscn")
 
 
 func _on_QuitButton_pressed() -> void:
