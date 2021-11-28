@@ -6,6 +6,13 @@ ui_master_volume,Master,Общий
 ui_music_volume,Music,Музыка
 ui_sfx_volume,SFX,Эффекты
 ui_speech_volume,Speech,Голос
+ui_start,Start,Старт
+ui_settings,Settings,Настройки
+ui_credits,Credits,Благодарности
+ui_tutorial,How To Play,Как играть
+ui_quit,Quit,Выход
+ui_continue,Continue,Продолжить
+ui_pause,Pause,Пауза
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево

@@ -51,7 +51,7 @@ __meta__ = {
 margin_top = 131.0
 margin_right = 512.0
 margin_bottom = 145.0
-text = "Pause"
+text = "ui_pause"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Gui/CanvasLayer/PauseContainer/VBoxContainer"]
@@ -64,13 +64,13 @@ alignment = 1
 margin_left = 199.0
 margin_right = 239.0
 margin_bottom = 20.0
-text = "Quit"
+text = "ui_quit"
 
 [node name="ContinueButton" type="Button" parent="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer"]
 margin_left = 243.0
 margin_right = 312.0
 margin_bottom = 20.0
-text = "Continue"
+text = "ui_continue"
 
 [node name="EnergyBar" type="ProgressBar" parent="Gui/CanvasLayer"]
 margin_left = 32.0

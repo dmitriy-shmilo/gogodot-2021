@@ -70,14 +70,14 @@ margin_left = 8.0
 margin_right = 158.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 150, 0 )
-text = "start"
+text = "ui_start"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 162.0
 margin_right = 312.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 150, 0 )
-text = "settings"
+text = "ui_settings"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 193.0
@@ -90,14 +90,14 @@ margin_left = 8.0
 margin_right = 158.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 150, 0 )
-text = "credits"
+text = "ui_credits"
 
 [node name="TutorialButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 162.0
 margin_right = 312.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 150, 0 )
-text = "how to play"
+text = "ui_tutorial"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_left = 85.0
@@ -106,7 +106,7 @@ margin_right = 235.0
 margin_bottom = 247.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 4
-text = "quit"
+text = "ui_quit"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/SettingsButton" to="." method="_on_SettingsButton_pressed"]
