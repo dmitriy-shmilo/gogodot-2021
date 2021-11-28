@@ -54,15 +54,17 @@ func _physics_process(delta: float) -> void:
 			else:
 				_target = null
 		TowerState.ATTACKING:
-			if not _bullet_loaded:
-				# wait for reload
-				return
 
 			if _target == null or not _target.is_threat():
 				_retarget()
 			else:
-				_bullet_loaded = false
 				_tower_container.look_at(_target.global_position)
+				
+				if not _bullet_loaded:
+					# wait for reload
+					return
+
+				_bullet_loaded = false
 				_shot_animation.play("shot" + str(variant.sprite_index))
 				_shot_animation.visible = true
 				_target.receive_damage(self, variant.damage)
