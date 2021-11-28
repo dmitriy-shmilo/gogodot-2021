@@ -13,7 +13,7 @@ enum TowerState {
 	DEAD
 }
 
-signal activity_changed(source, is_active)
+signal activation_requested(source, active)
 
 export(Resource) var variant = preload("res://game_screen/entities/towers/tower_variant0.tres")
 export(Color) var range_color = Color.cornflower
@@ -44,7 +44,7 @@ func _ready() -> void:
 	_shot_player.stream = SHOT_STREAMS[sprite_index]
 	_attack_timer.wait_time = 1.0 / variant.attack_rate
 	(_range_shape.shape as CircleShape2D).radius = variant.attack_range
-	_toggle_active(false)
+	toggle_active(false)
 
 
 func _draw() -> void:
@@ -84,6 +84,18 @@ func _physics_process(delta: float) -> void:
 				_attack_timer.start()
 
 
+func toggle_active(active: bool) -> void:
+	if active:
+		modulate = Color.white
+		_move_to_state(TowerState.IDLE)
+		_power_indicator.visible = false
+		return
+
+	_power_indicator.visible = true
+	modulate = Color(0.3, 0.3, 0.3)
+	_move_to_state(TowerState.INACTIVE)
+
+
 func _retarget() -> void:
 	match _state:
 		TowerState.DEAD, TowerState.INACTIVE:
@@ -106,18 +118,6 @@ func _can_target(body: Node) -> bool:
 func _attack(enemy: EnemyUnit) -> void:
 	_target = enemy
 	_move_to_state(TowerState.IDLE if enemy == null else TowerState.ATTACKING)
-
-
-func _toggle_active(active: bool) -> void:
-	if active:
-		modulate = Color.white
-		_move_to_state(TowerState.IDLE)
-		_power_indicator.visible = false
-		return
-
-	_power_indicator.visible = true
-	modulate = Color(0.3, 0.3, 0.3)
-	_move_to_state(TowerState.INACTIVE)
 
 
 func _can_move_to_state(state: int) -> bool:
@@ -150,11 +150,8 @@ func _move_to_state(state: int) -> void:
 				_attack_timer.start()
 		TowerState.INACTIVE, TowerState.DEAD:
 			_range_shape.call_deferred("set_disabled", true)
-			emit_signal("activity_changed", self, false)
 		TowerState.IDLE:
 			_range_shape.call_deferred("set_disabled", false)
-			if old_state == TowerState.INACTIVE:
-				emit_signal("activity_changed", self, true)
 
 
 func _describe_state() -> String:
@@ -175,7 +172,7 @@ func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 	if event is InputEventMouseButton \
 		and event.button_index == BUTTON_LEFT \
 		and event.pressed:
-			_toggle_active(_state == TowerState.INACTIVE)
+			emit_signal("activation_requested", self, _state == TowerState.INACTIVE)
 
 
 func _on_ClickArea_mouse_entered() -> void:

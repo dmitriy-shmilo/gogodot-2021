@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func setup() -> void:
 	for tower in _towers:
-		tower.connect("activity_changed", self, "_tower_activity_changed")
+		tower.connect("activation_requested", self, "_tower_activation_requested")
 
 	emit_signal("energy_changed", self, current_energy, total_energy)
 	emit_signal("health_changed", self, _core.current_hitpoints, _core.total_hitpoints)
@@ -40,13 +40,17 @@ func get_start_position() -> Vector2:
 	return _core.global_position
 
 
-func _tower_activity_changed(tower, is_active) -> void:
-	if is_active:
-		current_energy -= tower.variant.energy_cost
+func _tower_activation_requested(tower, active) -> void:
+	if active:
+		# TODO: else shake power bar
+		if current_energy >= tower.variant.energy_cost:
+			current_energy -= tower.variant.energy_cost
+			tower.toggle_active(true)
+			emit_signal("energy_changed", self, current_energy, total_energy)
 	else:
 		current_energy += tower.variant.energy_cost
-
-	emit_signal("energy_changed", self, current_energy, total_energy)
+		tower.toggle_active(false)
+		emit_signal("energy_changed", self, current_energy, total_energy)
 
 
 func _spawner_core_damaged(_unit, damage):
