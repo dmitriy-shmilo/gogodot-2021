@@ -66,6 +66,7 @@ func _level_energy_changed(_level, current_energy, total_energy):
 
 func _level_score_changed(_level, amount, total):
 	_gui.set_score(total, amount)
+	UserSaveData.current_score = total
 
 
 func _level_health_changed(_level, amount, total):

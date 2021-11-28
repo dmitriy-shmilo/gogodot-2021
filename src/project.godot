@@ -84,6 +84,7 @@ ErrorHandler="*res://util/error_handler.gd"
 Settings="*res://util/settings.gd"
 MenuMusic="*res://title_screen/menu_music.tscn"
 Globals="*res://util/globals.gd"
+UserSaveData="*res://util/user_save_data.gd"
 
 [debug]
 
