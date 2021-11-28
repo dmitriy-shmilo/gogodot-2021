@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game_screen/entities/enemies/enemy_unit_variant.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+move_speed = 35.0
+max_hitpoints = 45.0
+sprite_index = 3

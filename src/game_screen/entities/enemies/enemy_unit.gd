@@ -1,6 +1,35 @@
 extends KinematicBody2D
 class_name EnemyUnit
 
+const VARIANT_DISTRIBUTION = [
+	
+	# easy worms
+	preload("res://game_screen/entities/enemies/enemy_variant0.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant0.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant0.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant0.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant0.tres"),
+
+	# spiders
+	preload("res://game_screen/entities/enemies/enemy_variant1.tres"),
+	
+	# easy roaches
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant2.tres"),
+	
+	# stickbugs
+	preload("res://game_screen/entities/enemies/enemy_variant3.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant3.tres"),
+	preload("res://game_screen/entities/enemies/enemy_variant3.tres"),
+	
+	# stinkbugs
+	preload("res://game_screen/entities/enemies/enemy_variant4.tres"),
+]
+
 enum EnemyState {
 	IDLE,
 	MOVING,
@@ -14,10 +43,7 @@ signal unit_killed(source, coord)
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 onready var _animated_sprite: AnimatedSprite = $"AnimatedSprite"
 
-export(float) var move_speed = 45
-export(float) var max_hitpoints = 50
-export(float) var current_hitpoints = max_hitpoints
-
+var _variant: EnemyUnitVariant = VARIANT_DISTRIBUTION[0]
 var _velocity = Vector2.ZERO
 var _distance_threshold = 5
 var _target_point_index = 0
@@ -25,9 +51,12 @@ var _total_points = 0
 var _points: PoolVector2Array = PoolVector2Array()
 var _state = EnemyState.IDLE
 var _current_threat = null
+var _current_hitpoints = 1
 
 func _ready() -> void:
-	_animated_sprite.play("creep" + str(randi() % 2 + 1))
+	_variant = VARIANT_DISTRIBUTION[randi() % VARIANT_DISTRIBUTION.size()]
+	_animated_sprite.play("creep" + str(_variant.sprite_index))
+	_current_hitpoints = _variant.max_hitpoints
 
 func is_threat() -> bool:
 	return _state != EnemyState.DEAD
@@ -35,8 +64,8 @@ func is_threat() -> bool:
 
 # source should be PlayerTower, but then it causes cyclic dependency
 func receive_damage(source: Node, amount: float) -> void:
-	current_hitpoints -= amount
-	if current_hitpoints <= 0:
+	_current_hitpoints -= amount
+	if _current_hitpoints <= 0:
 		_move_to_state(EnemyState.DEAD)
 
 
@@ -76,7 +105,7 @@ func _move_towards(target) -> bool:
 	if position.distance_to(target) < _distance_threshold:
 		return true
 
-	_velocity = (target - position).normalized() * move_speed
+	_velocity = (target - position).normalized() * _variant.move_speed
 	_velocity = move_and_slide(_velocity)
 	look_at(target)
 	return false

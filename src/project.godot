@@ -17,7 +17,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "EnemyUnit",
 "language": "GDScript",
-"path": "res://game_screen/entities/enemy_unit.gd"
+"path": "res://game_screen/entities/enemies/enemy_unit.gd"
+}, {
+"base": "Resource",
+"class": "EnemyUnitVariant",
+"language": "GDScript",
+"path": "res://game_screen/entities/enemies/enemy_unit_variant.gd"
 }, {
 "base": "Node",
 "class": "Gui",
@@ -52,6 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "EnemySpawner": "",
 "EnemyUnit": "",
+"EnemyUnitVariant": "",
 "Gui": "",
 "KeyBindingButton": "",
 "Level": "",

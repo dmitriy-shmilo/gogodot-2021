@@ -4,7 +4,7 @@ class_name EnemySpawner
 var _map: TileMapMesh
 var _core: PlayerCore
 var _points: PoolVector2Array
-var _enemy_scene = preload("res://game_screen/entities/enemy_unit.tscn")
+var _enemy_scene = preload("res://game_screen/entities/enemies/enemy_unit.tscn")
 
 
 onready var _debug_line = $"Node/DebugLine"
