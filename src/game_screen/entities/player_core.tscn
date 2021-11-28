@@ -5,5 +5,4 @@
 [node name="PlayerCore" type="Node2D"]
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 3.46872, -1.74382 )
 texture = ExtResource( 2 )

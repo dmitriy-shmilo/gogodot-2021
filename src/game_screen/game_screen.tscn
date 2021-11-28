@@ -132,5 +132,8 @@ current = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera"]
 shape = SubResource( 1 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/CanvasLayer/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

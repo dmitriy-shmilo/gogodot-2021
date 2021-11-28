@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name EnemyUnit
 
+const FINISH_RADIUS = 50
+const FINISH_DIAMETER = FINISH_RADIUS * 2
 const VARIANT_DISTRIBUTION = [
 	
 	# easy worms
@@ -35,13 +37,15 @@ enum EnemyState {
 	MOVING,
 	AGGRAVATED,
 	ATTACKING,
-	DEAD
+	DEAD,
+	FINISHED
 }
 
 signal unit_killed(source, coord)
 
 onready var _enemy_shape: CollisionShape2D = $"EnemyShape"
 onready var _animated_sprite: AnimatedSprite = $"AnimatedSprite"
+onready var _attack_timer: Timer = $"AttackTimer"
 
 var _variant: EnemyUnitVariant = VARIANT_DISTRIBUTION[0]
 var _velocity = Vector2.ZERO
@@ -52,11 +56,14 @@ var _points: PoolVector2Array = PoolVector2Array()
 var _state = EnemyState.IDLE
 var _current_threat = null
 var _current_hitpoints = 1
+var _finish_point = Vector2.ZERO
 
 func _ready() -> void:
 	_variant = VARIANT_DISTRIBUTION[randi() % VARIANT_DISTRIBUTION.size()]
 	_animated_sprite.play("creep" + str(_variant.sprite_index))
 	_current_hitpoints = _variant.max_hitpoints
+	_attack_timer.wait_time = 1 / _variant.attack_rate
+
 
 func is_threat() -> bool:
 	return _state != EnemyState.DEAD
@@ -72,10 +79,14 @@ func receive_damage(source: Node, amount: float) -> void:
 func setup(points) -> void:
 	_points = points
 	_total_points = _points.size()
+	_finish_point.x = _points[_points.size() - 1].x + FINISH_RADIUS - randf() * FINISH_DIAMETER
+	_finish_point.y = _points[_points.size() - 1].y + FINISH_RADIUS - randf() * FINISH_DIAMETER
 
 
 func _physics_process(_delta: float) -> void:
 	match _state:
+		EnemyState.FINISHED:
+			_finish_move()
 		EnemyState.MOVING:
 			_waypoint_move()
 		EnemyState.AGGRAVATED:
@@ -89,6 +100,10 @@ func _threat_move() -> void:
 		_move_to_state(EnemyState.ATTACKING)
 
 
+func _finish_move() -> void:
+	_move_towards(_finish_point)
+
+
 func _waypoint_move() -> void:
 	if _total_points == 0:
 		return
@@ -98,7 +113,7 @@ func _waypoint_move() -> void:
 	
 	_target_point_index = _target_point_index + 1
 	if  _target_point_index == _total_points - 1:
-		_move_to_state(EnemyState.DEAD)
+		_move_to_state(EnemyState.FINISHED)
 
 
 func _move_towards(target) -> bool:
@@ -115,6 +130,8 @@ func _can_move_to_state(state: int) -> bool:
 	match state:
 		EnemyState.IDLE:
 			return false
+		EnemyState.FINISHED:
+			return _state != EnemyState.DEAD
 		EnemyState.MOVING:
 			return _state == EnemyState.AGGRAVATED \
 				or _state == EnemyState.ATTACKING \
@@ -137,6 +154,8 @@ func _move_to_state(state: int) -> void:
 		_state = state
 
 	match state:
+		EnemyState.FINISHED:
+			_attack_timer.start()
 		EnemyState.DEAD:
 			_enemy_shape.call_deferred("set_disabled", true)
 			call_deferred("queue_free")
@@ -147,3 +166,8 @@ func _move_to_state(state: int) -> void:
 
 func _describe_state() -> String:
 	return EnemyState.keys()[_state]
+
+
+func _on_AttackTimer_timeout() -> void:
+	# TODO: damage the core
+	pass
