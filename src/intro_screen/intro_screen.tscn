@@ -148,6 +148,8 @@ visible = false
 [node name="Donut" type="Sprite" parent="Illustrations/Illustration1"]
 position = Vector2( 294.768, 129.569 )
 texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 150, 150 )
 
 [node name="Hq" type="Sprite" parent="Illustrations/Illustration1"]
 position = Vector2( 371.979, 96.4584 )
@@ -215,7 +217,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration3"]
@@ -236,7 +238,6 @@ region_rect = Rect2( 64, 0, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 15 )
-frame = 1
 playing = true
 
 [node name="Glasses" type="Sprite" parent="Illustrations/Illustration3"]
@@ -339,7 +340,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration5"]
@@ -368,7 +369,10 @@ visible = false
 
 [node name="Donut" type="Sprite" parent="Illustrations/Illustration6"]
 position = Vector2( 294.768, 129.569 )
+scale = Vector2( 1, 0.99759 )
 texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 150, 150 )
 
 [node name="HealthBar" type="ProgressBar" parent="Illustrations/Illustration6"]
 margin_left = 241.465
