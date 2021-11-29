@@ -136,34 +136,14 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
-[node name="KeyBindings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.38271
-margin_top = 30.1325
-margin_right = -5.88115
-margin_bottom = -6.5068
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
-margin_left = 258.0
-margin_top = 105.0
-margin_right = 258.0
-margin_bottom = 105.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-custom_constants/vseparation = 10
-custom_constants/hseparation = 10
-columns = 4
-
 [node name="Video" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.38271
-margin_top = 30.1325
-margin_right = -5.88115
-margin_bottom = -6.5068
+margin_top = 30.1324
+margin_right = -5.88116
+margin_bottom = -6.50681
 
 [node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Video"]
 margin_right = 517.229
@@ -216,6 +196,26 @@ margin_right = 460.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
+
+[node name="KeyBindings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.38271
+margin_top = 30.1325
+margin_right = -5.88115
+margin_bottom = -6.5068
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
+margin_left = 258.0
+margin_top = 105.0
+margin_right = 258.0
+margin_bottom = 105.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 margin_left = 237.0

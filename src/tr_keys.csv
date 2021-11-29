@@ -122,3 +122,5 @@ key_left,Left,Влево
 key_right,Right,Вправо
 key_zoom_in,Zoom In,Приблизить
 key_zoom_out,Zoom Out,Отдалить
+key_shut_down,Shut All Down,Отключить Все
+key_system_pause,Pause,Пауза

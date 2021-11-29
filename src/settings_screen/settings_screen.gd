@@ -24,8 +24,8 @@ func _ready() -> void:
 
 func _prepare_tabs() -> void:
 	_tab_container.set_tab_title(0, tr("ui_sound_settings"))
-	_tab_container.set_tab_title(1, tr("ui_key_bindings"))
-	_tab_container.set_tab_title(2, tr("ui_video_settings"))
+	_tab_container.set_tab_title(1, tr("ui_video_settings"))
+	_tab_container.set_tab_title(2, tr("ui_key_bindings"))
 
 
 func _prepare_volume() -> void:
@@ -40,7 +40,7 @@ func _prepare_video() -> void:
 
 
 func _prepare_keybindings() -> void:
-	var actions = ["up", "down", "left", "right", "zoom_in", "zoom_out"]
+	var actions = ["up", "down", "left", "right", "zoom_in", "zoom_out", "system_pause", "shut_down"]
 	for action in actions:
 		var label = KeyBindingLabelScene.instance()
 		label.text = tr("key_" + action)

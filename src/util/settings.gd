@@ -95,7 +95,7 @@ func _get_data() -> Dictionary:
 	var action_map = {}
 	var actions = InputMap.get_actions()
 	for action in actions:
-		if action.begins_with("ui_") or action.begins_with("system_"):
+		if action.begins_with("ui_"):
 			continue;
 		var list = InputMap.get_action_list(action)
 		if list.size() == 0:
@@ -136,7 +136,6 @@ func _set_from_data(data: Dictionary) -> void:
 		var actions = InputMap.get_actions()
 		for action in actions:
 			if action.begins_with("ui_") \
-				or action.begins_with("system_") \
 				or not data["actions"].has(action):
 				continue;
 			
