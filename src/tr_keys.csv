@@ -12,7 +12,7 @@ ui_speech_volume,Speech,Голос
 ui_start,Start,Старт
 ui_settings,Settings,Настройки
 ui_credits,Credits,Благодарности
-ui_tutorial,How To Play,Как играть
+ui_tutorial,Description,Описание
 ui_quit,Quit,Выход
 ui_back,Back,Назад
 ui_skip_intro,Skip Intro,Пропустить
@@ -62,6 +62,48 @@ message_brief4,"Good news, we have set up automatic turret defenses in every cho
 message_brief5,"Bad news, our only energy source - portable power generators - were damaged during the last tablequake, and we're running on reserves.","Плохая новость: наш единственный источник энергии, блок портативных генераторов, был поврежден в ходе последнего столотрясения. Нам приходится оперировать на резервном питании."
 message_brief6,"Even worse, energy reserves aren't enough to power all defenses at the same time, so we must manage defense activity manually.","Еще хуже то, что запасного питания не хватает на всю систему обороны. Нам придется управлять энергопотреблением в ручном режиме."
 message_brief7,"Our task is to hold the position as long as possible, allowing white collars to gather as much Artifact Data as possible. Good luck, Commander.","Наша задача удерживать позицию как можно дольше, пока белые воротнички собирают Данные об Артефакте. Удачи, Командир."
+ui_tutorial_message,"[center][img]res://assets/title.png[/img][/center]
+
+[font=res://ui/font_large.tres]Premise[/font]
+
+Donut Defense is a tower defense game, except you don't build towers. Instead, your [shake]energy source[/shake] provides a limited supply of power, which allows you to keep only a certain amount of defenses active at a time. Your job is to toggle defenses on and off, depending on the situation.
+
+[font=res://ui/font_large.tres]Enemies[/font]
+
+Your base will be constantly assaulted by an endless wave of enemies, trying to get to your core. You lose if your core gets destroyed. You can't win, unfortunately, but you earn score over time. Your score accumulates faster when your core is healthy.
+
+Enemies spawn at fixed locations and head straight towards the core. Over time, depending on your actions, enemies will re-adjust their path, and will keep looking for new approaches until the end of the game.
+
+Your defenses and background objects can not be traversed by enemies, which forces the enemy to funnel into several choke points.
+
+[font=res://ui/font_large.tres]Controls[/font]
+
+Inactive turrets don't shoot. Click on a turret to toggle its state. Inactive turret will become active, unless there's no more energy available. In which case, deactivate other turrets first. Press [u]<Z>[/u] to deactivate all towers at once.
+
+Camera can be moved by edge-scrolling, or with [u]<W>, <A>, <S>, <D>[/u] keys. Press and hold [u]<Shift>[/u] to increase camera move speed. Zoom in and out with [u]<Q>[/u] and [u]<E>[/u] keys, or mouse wheel.
+
+Have fun, thank you for playing.
+","[center][img]res://assets/title.png[/img][/center]
+
+[font=res://ui/font_large.tres]Идея[/font]
+
+Donut Defense - это игра жанра tower defense, в которой вам не надо строить башни. Вместо этого, ваш [shake]источник энергии[/shake] способен одновременно запитать только ограниченное количество турелей. Ваша задача включать и выключать турели в зависимости от положения дел.
+
+[font=res://ui/font_large.tres]Враги[/font]
+
+Ваша база будет ппостоянно атаковаться бесконечными волнами врагов пытающихся добраться до вашего центра. Вы проиграете если артефакт в центре будет уничтожен. К сожалению, выиграть в эту игру невозможно, но вы будете набирать очки с течением времени. Очки набираются быстрее если ваш артефакт не был повреждено.
+
+Враги появляеются в заранее заданных стартовых точках и направляются прямиком в центр. Со временем, в зависимости от ваших действий, враги будут изменять свой маршрут, и продолжат искать новые подходы до самого конца игры.
+
+По вашим турелям и фоновым предметам нельзя ходить, что заставит врагов ломиться сквозь несколько узких мест по периметру вашей базы.
+
+[font=res://ui/font_large.tres]Управление[/font]
+
+Неактивные турели не стреляют. Нажмите на турель чтобы включить ее. Турель включится и примется за обстрел врагов, но только если вам хватает питания. Если питания не хватает, отключите уже активные турели. Нажмите [u]<Z>[/u] чтобы выключить все турели сразу.
+
+Камеру можно передвигат подвинув мышь к краю экрана или кнопками [u]<W>, <A>, <S>, <D>[/u]. Зажмите [u]<Shift>[/u] чтобы ускорить движение камеры. Приближайтесь и отдаляйтесь кнопками [u]<Q>[/u] и [u]<E>[/u], или колесиком мыши.
+
+Спасибо за внимание."
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево
