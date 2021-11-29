@@ -22,7 +22,10 @@ ui_pause,Pause,Пауза
 ui_game_over,Game Over,Конец Игры
 ui_highscore_achieved,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b], which is your highest score. Green Plastic Nation thanks you for your effort.","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b], и это новый рекорд. Зеленая Пластиковая Нация благодарит вас за ваши усилия.[/center]"
 ui_highscore,"[center]You fought like a lion, but nobody can fight an endless swarm forever. Your score is [b]{0}[/b]. Your highest score ever was [b]{1}[/b]. Green Plastic Nation thanks you for your effort.[/center]","[center]Вы сражались как лев, но никто не может выстоять против нескончаемой орды монстров. Ваш счет [b]{0}[/b]. Ваш рекорд был [b]{1}[/b]. Зеленая Пластиковая Нация благодарит вас за ваши усилия.[/center]"
-ui_credits_text,"[font=res://ui/font_large.tres]SFX[/font]
+ui_credits_text,"[font=res://ui/font_large.tres]Font[/font]
+- [url=https://datagoblin.itch.io/monogram]monogram[/url] by datagoblin
+
+[font=res://ui/font_large.tres]SFX[/font]
 - [url=https://freesound.org/people/Timbre/sounds/138002/]up-down-thing-1[/url]by Timbre
 - [url=https://freesound.org/people/newlocknew/sounds/563915/]Tonal beep patch_1[/url] by newlocknew
 - [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing[/url] by mnslugger20
@@ -41,18 +44,21 @@ ui_credits_text,"[font=res://ui/font_large.tres]SFX[/font]
 
 [font=res://ui/font_large.tres]Code[/font]
 - [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
-- Game sources are avaiable on [url=https://github.com/dmitriy-shmilo/gogodot-2021]github[/url].\n","[font=res://ui/font_large.tres]Звук[/font]
-- [url=https://freesound.org/people/Timbre/sounds/138002/]up-down-thing-1[/url]by Timbre
-- [url=https://freesound.org/people/newlocknew/sounds/563915/]Tonal beep patch_1[/url] by newlocknew
-- [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing[/url] by mnslugger20
-- [url=https://freesound.org/people/Erokia/sounds/410400/]30-30 Lever Rifle Gunshot 2[/url] by Erokia\n
+- Game sources are avaiable on [url=https://github.com/dmitriy-shmilo/gogodot-2021]github[/url].\n","[font=res://ui/font_large.tres]Шрифт[/font]
+- [url=https://datagoblin.itch.io/monogram]monogram[/url], автор datagoblin
+
+[font=res://ui/font_large.tres]Звук[/font]
+- [url=https://freesound.org/people/Timbre/sounds/138002/]up-down-thing-1[/url], автор Timbre
+- [url=https://freesound.org/people/newlocknew/sounds/563915/]Tonal beep patch_1[/url], автор newlocknew
+- [url=https://freesound.org/people/mnslugger20/sounds/259758/]M4 Assault rifle firing[/url], автор mnslugger20
+- [url=https://freesound.org/people/Erokia/sounds/410400/]30-30 Lever Rifle Gunshot 2[/url], автор Erokia
 
 [font=res://ui/font_large.tres]Музыка[/font]
-- [url=https://opengameart.org/content/tragic-ambient-main-menu]Tragic ambient main menu[/url] by brandon75689
-- [url=https://opengameart.org/content/dream-raid-cinematic-action-soundtrack]Dream Raid[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
-- [url=https://opengameart.org/content/wasteland-overdrive]Wasteland Overdrive[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
-- [url=https://opengameart.org/content/imminent-threat]Imminent Threat[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
-- [url=https://opengameart.org/content/the-fall-of-arcana-epic-game-theme-music]The Fall of Arcana[/url] by [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/tragic-ambient-main-menu]Tragic ambient main menu[/url], автор brandon75689
+- [url=https://opengameart.org/content/dream-raid-cinematic-action-soundtrack]Dream Raid[/url], автор [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/wasteland-overdrive]Wasteland Overdrive[/url], автор [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/imminent-threat]Imminent Threat[/url], автор [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
+- [url=https://opengameart.org/content/the-fall-of-arcana-epic-game-theme-music]The Fall of Arcana[/url], автор [url=http://www.matthewpablo.com/]Matthew Pablo[/url]
 
 [font=res://ui/font_large.tres]Арт[/font]
 - [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
@@ -62,11 +68,11 @@ ui_credits_text,"[font=res://ui/font_large.tres]SFX[/font]
 - [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
 - Исходники доступны на [url=https://github.com/dmitriy-shmilo/gogodot-2021]гитхабе[/url].\n"
 message_brief1, "Greetings, Commander. Allow me to brief you through our mission.","Добро пожаловать, Командир. Позвольте ввести Вас в курс дела."
-message_brief2,"We have tracked down and secured The Artifact deep into the Great Table Ruins. We have set up shop right next to the target, and our scientists already began their research.","Мы обнаружили Артифакт в посреди руин Великого Рабочего Стола. Мы разбили лагерь и наши ученые уже проводят исследования."
+message_brief2,"We have tracked down and secured The Artifact deep into the Great Desktop Ruins. We have set up shop right next to the target, and our scientists already began their research.","Мы обнаружили Артефакт посреди руин Великого Рабочего Стола. Мы разбили лагерь и наши ученые уже проводят исследования."
 message_brief3,"We have mobilized after scout reports of an incoming local fauna swarm. They are apparently attracted by The Artifact and head straight towards us.","Нам пришлось мобилизоваться после докладов разведки о надвигающемся рое местной фауны. Они приближаются к нашим позициям, видимо, привлеченные Артефактом."
 message_brief4,"Good news, we have set up automatic turret defenses in every chokepoint around the base.","Хорошая новость: мы установили автоматическую систему защиты в каждом узком месте по периметру."
-message_brief5,"Bad news, our only energy source - portable power generators - were damaged during the last tablequake, and we're running on reserves.","Плохая новость: наш единственный источник энергии, блок портативных генераторов, был поврежден в ходе последнего столотрясения. Нам приходится оперировать на резервном питании."
-message_brief6,"Even worse, energy reserves aren't enough to power all defenses at the same time, so we must manage defense activity manually.","Еще хуже то, что запасного питания не хватает на всю систему обороны. Нам придется управлять энергопотреблением в ручном режиме."
+message_brief5,"Bad news, our only [shake]energy source[/shake] - portable power generators - were damaged during the last tablequake. We're forced to use backup one.","Плохая новость: наш единственный [shake]источник энергии[/shake], блок портативных генераторов, был поврежден в ходе последнего столотрясения. Нам приходится оперировать на резервном питании."
+message_brief6,"Even worse, backup power isn't enough to power all defenses at the same time, so we must manage defense activity manually.","Еще хуже то, что запасного питания не хватает на всю систему обороны. Нам придется управлять энергопотреблением в ручном режиме."
 message_brief7,"Our task is to hold the position as long as possible, allowing white collars to gather as much Artifact Data as possible. Good luck, Commander. Green Plastic Nation counts on us.","Наша задача удерживать позицию как можно дольше, пока белые воротнички собирают Данные об Артефакте. Удачи, Командир. Зеленая Пластиковая Нация рассчитывает на нас."
 ui_tutorial_message,"[center][img]res://assets/title.png[/img][/center]
 

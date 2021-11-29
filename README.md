@@ -1,5 +1,8 @@
 # Credits #
 
+## Font ##
+- [monogram](https://datagoblin.itch.io/monogram) by datagoblin
+
 ## SFX ##
 - [up-down-thing-1](https://freesound.org/people/Timbre/sounds/138002/) by Timbre
 - [Tonal beep patch_1](https://freesound.org/people/newlocknew/sounds/563915/) by newlocknew
