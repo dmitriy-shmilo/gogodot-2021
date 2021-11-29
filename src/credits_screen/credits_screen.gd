@@ -1,6 +1,6 @@
-extends VBoxContainer
+extends Control
 
-onready var _credits_text: RichTextLabel = $"CreditsText"
+onready var _credits_text: RichTextLabel = $"VBoxContainer/PanelContainer/CreditsText"
 
 func _ready() -> void:
 	_credits_text.bbcode_text = tr("ui_credits_text")

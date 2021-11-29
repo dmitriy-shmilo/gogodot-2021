@@ -1,6 +1,8 @@
 # Credits #
 
 ## SFX ##
+- [up-down-thing-1](https://freesound.org/people/Timbre/sounds/138002/) by Timbre
+- [Tonal beep patch_1](https://freesound.org/people/newlocknew/sounds/563915/) by newlocknew
 - [M4 Assault rifle firing](https://freesound.org/people/mnslugger20/sounds/259758/) by mnslugger20
 - [30-30 Lever Rifle Gunshot 2](https://freesound.org/people/Erokia/sounds/410400/) by Erokia
 

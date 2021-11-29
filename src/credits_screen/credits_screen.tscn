@@ -5,31 +5,50 @@
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/font_large.tres" type="DynamicFont" id=4]
 
-[node name="CreditsScreen" type="VBoxContainer"]
+[node name="CreditsScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = 50.0
-margin_right = -100.0
-margin_bottom = -40.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
-margin_right = 440.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+margin_right = 576.0
 margin_bottom = 26.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Credits"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CreditsText" type="RichTextLabel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 30.0
-margin_right = 440.0
-margin_bottom = 241.0
+margin_right = 576.0
+margin_bottom = 267.0
+size_flags_vertical = 3
+
+[node name="CreditsText" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+margin_left = 6.62864
+margin_top = 6.12836
+margin_right = 570.122
+margin_bottom = 230.621
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 bbcode_enabled = true
@@ -39,11 +58,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 245.0
-margin_right = 263.0
-margin_bottom = 270.0
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+margin_left = 245.0
+margin_top = 271.0
+margin_right = 331.0
+margin_bottom = 296.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
@@ -52,5 +71,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="meta_clicked" from="CreditsText" to="." method="_on_CreditsText_meta_clicked"]
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="meta_clicked" from="VBoxContainer/PanelContainer/CreditsText" to="." method="_on_CreditsText_meta_clicked"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
