@@ -32,7 +32,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event) -> void:
-	if event.is_action_pressed("system_pause"):
+	if event.is_action_pressed("system_pause") \
+		or event.is_action_pressed("ui_cancel"):
 		get_tree().paused = true
 		_pause_container.visible = true
 		_set_soundtrack_volume(PAUSE_VOLUME_MOD)
