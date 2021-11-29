@@ -35,5 +35,5 @@ func _on_SettingsButton_pressed() -> void:
 
 func _on_NewGameButton_pressed() -> void:
 	_transition_player.play("fade_out")
-	var err = get_tree().change_scene("res://game_screen/game_screen.tscn")
+	var err = get_tree().change_scene("res://intro_screen/intro_screen.tscn")
 	ErrorHandler.handle(err)

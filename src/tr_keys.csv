@@ -15,6 +15,7 @@ ui_credits,Credits,Благодарности
 ui_tutorial,How To Play,Как играть
 ui_quit,Quit,Выход
 ui_back,Back,Назад
+ui_skip_intro,Skip Intro,Пропустить
 ui_retry,Retry,Еще раз
 ui_continue,Continue,Продолжить
 ui_pause,Pause,Пауза
@@ -54,6 +55,13 @@ ui_credits_text,"[color=black][font=res://ui/font_large.tres]SFX[/font]
 
 [font=res://ui/font_large.tres]Код[/font]
 - [url=https://github.com/dmitriy-shmilo]Dmitriy Shmilo[/url][/color]\n"
+message_brief1, "Greetings, Commander. Allow me to brief you through our mission.","Добро пожаловать, Командир. Позвольте ввести Вас в курс дела."
+message_brief2,"We have tracked down and secured The Artifact deep into the Great Table Ruins. We have set up shop right next to the target, and our scientists already began their research.","Мы обнаружили Артифакт в посреди руин Великого Рабочего Стола. Мы разбили лагерь и наши ученые уже проводят исследования."
+message_brief3,"We have mobilized after scout reports of an incoming local fauna swarm. They are apparently attracted by The Artifact and head straight towards us.","Нам пришлось мобилизоваться после докладов разведки о надвигающемся рое местной фауны. Они приближаются к нашим позициям, видимо, привлеченные Артефактом."
+message_brief4,"Good news, we have set up automatic turret defenses in every chokepoint around the base.","Хорошая новость: мы установили автоматическую систему защиты в каждом узком месте по периметру."
+message_brief5,"Bad news, our only energy source - portable power generators - were damaged during the last tablequake, and we're running on reserves.","Плохая новость: наш единственный источник энергии, блок портативных генераторов, был поврежден в ходе последнего столотрясения. Нам приходится оперировать на резервном питании."
+message_brief6,"Even worse, energy reserves aren't enough to power all defenses at the same time, so we must manage defense activity manually.","Еще хуже то, что запасного питания не хватает на всю систему обороны. Нам придется управлять энергопотреблением в ручном режиме."
+message_brief7,"Our task is to hold the position as long as possible, allowing white collars to gather as much Artifact Data as possible. Good luck, Commander.","Наша задача удерживать позицию как можно дольше, пока белые воротнички собирают Данные об Артефакте. Удачи, Командир."
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево

@@ -1,0 +1,465 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://intro_screen/intro_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/soldier.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui.png" type="Texture" id=4]
+[ext_resource path="res://assets/donut.png" type="Texture" id=5]
+[ext_resource path="res://assets/hq.png" type="Texture" id=6]
+[ext_resource path="res://title_screen/title_enemies.gd" type="Script" id=7]
+[ext_resource path="res://assets/pen.png" type="Texture" id=8]
+[ext_resource path="res://assets/turrets.png" type="Texture" id=9]
+[ext_resource path="res://assets/remote.png" type="Texture" id=10]
+[ext_resource path="res://assets/glasses.png" type="Texture" id=11]
+[ext_resource path="res://assets/generator.png" type="Texture" id=12]
+[ext_resource path="res://ui/energy_bar.tres" type="Theme" id=13]
+[ext_resource path="res://ui/health_bar.tres" type="Theme" id=14]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 9 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 9 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 9 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 9 )
+region = Rect2( 384, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), null, null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ null, null, SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 9 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 9 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 16, 16, 16 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 48, 80, 16, 16 )
+margin_left = 6.0
+margin_right = 5.0
+margin_top = 6.0
+margin_bottom = 5.0
+
+[sub_resource type="Theme" id=7]
+PanelContainer/styles/panel = SubResource( 6 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="IntroScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Illustrations" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Illustration0" type="Node2D" parent="Illustrations"]
+
+[node name="Illustration1" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="Donut" type="Sprite" parent="Illustrations/Illustration1"]
+position = Vector2( 294.768, 129.569 )
+texture = ExtResource( 5 )
+
+[node name="Hq" type="Sprite" parent="Illustrations/Illustration1"]
+position = Vector2( 371.979, 96.4584 )
+rotation = 1.06987
+texture = ExtResource( 6 )
+
+[node name="Illustration2" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="Enemies2" type="Node2D" parent="Illustrations/Illustration2"]
+script = ExtResource( 7 )
+
+[node name="EnemyPath" type="Line2D" parent="Illustrations/Illustration2/Enemies2"]
+visible = false
+points = PoolVector2Array( -20.8238, 156.31, 286.741, 157.557, 302.333, 58.8075, 372.497, 61.4062, 382.891, 144.044, 840.049, 179.074 )
+
+[node name="Timer" type="Timer" parent="Illustrations/Illustration2/Enemies2"]
+wait_time = 1.5
+autostart = true
+
+[node name="Pen" type="Sprite" parent="Illustrations/Illustration2"]
+position = Vector2( 331.34, 151.249 )
+scale = Vector2( 0.121848, 0.121848 )
+texture = ExtResource( 8 )
+
+[node name="Illustration3" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="Cannon" type="Node2D" parent="Illustrations/Illustration3"]
+position = Vector2( 259.667, 212.439 )
+rotation = -1.28077
+
+[node name="Sprite" type="Sprite" parent="Illustrations/Illustration3/Cannon"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Illustrations/Illustration3/Cannon"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 64 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Illustrations/Illustration3/Cannon/Sprite2"]
+position = Vector2( 1.01756, 53.9307 )
+rotation = 1.5708
+frames = SubResource( 13 )
+frame = 3
+playing = true
+
+[node name="Cannon2" type="Node2D" parent="Illustrations/Illustration3"]
+position = Vector2( 352.137, 114.351 )
+rotation = -0.979085
+
+[node name="Sprite" type="Sprite" parent="Illustrations/Illustration3/Cannon2"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Illustrations/Illustration3/Cannon2"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 64 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Illustrations/Illustration3/Cannon2/Sprite2"]
+position = Vector2( 1.01756, 53.9307 )
+rotation = 1.5708
+frames = SubResource( 14 )
+frame = 5
+playing = true
+
+[node name="Cannon3" type="Node2D" parent="Illustrations/Illustration3"]
+position = Vector2( 131.355, 118.202 )
+rotation = 1.60274
+
+[node name="Sprite" type="Sprite" parent="Illustrations/Illustration3/Cannon3"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Illustrations/Illustration3/Cannon3"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Illustrations/Illustration3/Cannon3/Sprite2"]
+position = Vector2( 1.01756, 53.9307 )
+rotation = 1.5708
+frames = SubResource( 15 )
+frame = 1
+playing = true
+
+[node name="Glasses" type="Sprite" parent="Illustrations/Illustration3"]
+position = Vector2( 176.765, 223.618 )
+rotation = 0.574711
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="Remote" type="Sprite" parent="Illustrations/Illustration3"]
+position = Vector2( 384.673, 31.2859 )
+rotation = -0.310167
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Pen" type="Sprite" parent="Illustrations/Illustration3"]
+position = Vector2( 111.567, 36.274 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="Illustration4" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="Generator" type="Sprite" parent="Illustrations/Illustration4"]
+position = Vector2( 191.859, 123.433 )
+rotation = 0.394964
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 48, 48 )
+
+[node name="BrokenGenerator" type="Sprite" parent="Illustrations/Illustration4"]
+modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
+position = Vector2( 236.375, 140.514 )
+rotation = 0.394964
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 48, 48 )
+
+[node name="BrokenGenerator2" type="Sprite" parent="Illustrations/Illustration4"]
+modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
+position = Vector2( 207.123, 88.7828 )
+rotation = 0.394964
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 48, 48 )
+
+[node name="BrokenGenerator3" type="Sprite" parent="Illustrations/Illustration4"]
+modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
+position = Vector2( 251.823, 106.287 )
+rotation = 0.394964
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 48, 48 )
+
+[node name="Hq" type="Sprite" parent="Illustrations/Illustration4"]
+position = Vector2( 361.376, 156.333 )
+rotation = -0.0526019
+texture = ExtResource( 6 )
+
+[node name="EnergyBar" type="ProgressBar" parent="Illustrations/Illustration4"]
+margin_left = 251.849
+margin_top = 23.9983
+margin_right = 379.848
+margin_bottom = 39.9983
+theme = ExtResource( 13 )
+value = 75.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Illustration5" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="EnergyBar" type="ProgressBar" parent="Illustrations/Illustration5"]
+margin_left = 251.849
+margin_top = 23.9983
+margin_right = 379.848
+margin_bottom = 39.9983
+theme = ExtResource( 13 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cannon2" type="Node2D" parent="Illustrations/Illustration5"]
+position = Vector2( 362.281, 118.252 )
+rotation = -1.68191
+
+[node name="Sprite" type="Sprite" parent="Illustrations/Illustration5/Cannon2"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Illustrations/Illustration5/Cannon2"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 64 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Illustrations/Illustration5/Cannon2/Sprite2"]
+position = Vector2( 1.01756, 53.9307 )
+rotation = 1.5708
+frames = SubResource( 14 )
+frame = 8
+playing = true
+
+[node name="Cannon3" type="Node2D" parent="Illustrations/Illustration5"]
+position = Vector2( 245.282, 115.081 )
+rotation = 1.60274
+
+[node name="Sprite" type="Sprite" parent="Illustrations/Illustration5/Cannon3"]
+modulate = Color( 0.345098, 0.345098, 0.345098, 1 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Illustrations/Illustration5/Cannon3"]
+modulate = Color( 0.345098, 0.345098, 0.345098, 1 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="PowerIndicator" type="AnimatedSprite" parent="Illustrations/Illustration5/Cannon3"]
+position = Vector2( -16.3396, -25.2825 )
+frames = SubResource( 21 )
+playing = true
+
+[node name="Illustration6" type="Node2D" parent="Illustrations"]
+visible = false
+
+[node name="Donut" type="Sprite" parent="Illustrations/Illustration6"]
+position = Vector2( 294.768, 129.569 )
+texture = ExtResource( 5 )
+
+[node name="HealthBar" type="ProgressBar" parent="Illustrations/Illustration6"]
+margin_left = 241.465
+margin_top = 20.2761
+margin_right = 369.465
+margin_bottom = 36.2761
+theme = ExtResource( 14 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="Illustrations/Illustration6"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 240.656
+margin_top = 40.5237
+margin_right = 368.656
+margin_bottom = 56.5237
+theme = ExtResource( 2 )
+text = "x0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreIcon" type="TextureRect" parent="Illustrations/Illustration6"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 224.656
+margin_top = 40.5237
+margin_right = 240.656
+margin_bottom = 56.5237
+texture = SubResource( 22 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitPanel" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -98.0
+margin_right = 100.0
+margin_bottom = -30.0
+theme = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="AnimatedSprite" parent="PortraitPanel"]
+frames = SubResource( 5 )
+frame = 2
+playing = true
+offset = Vector2( 35, 33 )
+
+[node name="DialogPanel" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 98.0
+margin_top = -98.0
+margin_right = 596.0
+margin_bottom = -30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogTextLabel" type="RichTextLabel" parent="DialogPanel"]
+margin_left = 6.62864
+margin_top = 6.12836
+margin_right = 492.122
+margin_bottom = 61.6215
+rect_min_size = Vector2( 0, 32 )
+bbcode_enabled = true
+
+[node name="SkipButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 472.509
+margin_top = -124.356
+margin_right = 594.509
+margin_bottom = -99.3561
+text = "ui_skip_intro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Illustrations/Illustration2/Enemies2/Timer" to="Illustrations/Illustration2/Enemies2" method="_on_Timer_timeout"]
+[connection signal="gui_input" from="DialogPanel/DialogTextLabel" to="." method="_on_DialogTextLabel_gui_input"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_SkipButton_pressed"]
