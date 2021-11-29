@@ -13,12 +13,22 @@ onready var _tilemap: TileMapMesh = $"Obstacles"
 onready var _power_on_player: AudioStreamPlayer = $"PowerOnPlayer"
 onready var _power_off_player: AudioStreamPlayer = $"PowerOffPlayer"
 onready var _warning_player: AudioStreamPlayer = $"WarningPlayer"
+onready var _generator_particles = [
+	$"HQ/BrokenGenerator/CPUParticles2D",
+	$"HQ/BrokenGenerator2/CPUParticles2D",
+	$"HQ/BrokenGenerator3/CPUParticles2D",
+]
 
 var _towers: Array
 var _score: float
 
 func _ready() -> void:
 	_towers = get_tree().get_nodes_in_group("PlayerTower")
+	
+	if Settings.particles:
+		for p in _generator_particles:
+			p.emitting = true
+			p.visible = true
 
 
 func _input(event: InputEvent) -> void:

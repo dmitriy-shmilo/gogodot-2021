@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game_screen/levels/level.gd" type="Script" id=3]
 [ext_resource path="res://assets/remote.png" type="Texture" id=4]
+[ext_resource path="res://assets/particles.png" type="Texture" id=5]
 [ext_resource path="res://game_screen/entities/towers/player_tower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game_screen/levels/tiles/walls.tres" type="TileSet" id=7]
 [ext_resource path="res://game_screen/levels/tile_map.gd" type="Script" id=8]
@@ -20,6 +21,16 @@
 [ext_resource path="res://assets/power_off.ogg" type="AudioStream" id=19]
 [ext_resource path="res://assets/power_on.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/warning.ogg" type="AudioStream" id=21]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.237624 ), 0.0, 0.0, 0, 0, Vector2( 0.889648, 0.719606 ), -0.646628, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 0.933333, 0.901961, 0.92549, 0.921569, 0.439216 )
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 3 )
@@ -253,6 +264,24 @@ texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HQ/BrokenGenerator"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
 [node name="BrokenGenerator2" type="Sprite" parent="HQ"]
 modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
 position = Vector2( -7.79799, -122.845 )
@@ -261,6 +290,24 @@ texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HQ/BrokenGenerator2"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
 [node name="BrokenGenerator3" type="Sprite" parent="HQ"]
 modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
 position = Vector2( -4.19687, -74.9744 )
@@ -268,6 +315,24 @@ rotation = 1.51364
 texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HQ/BrokenGenerator3"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 5.0

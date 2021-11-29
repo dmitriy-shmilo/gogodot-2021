@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://game_screen/entities/enemies/enemy_unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/creeps.png" type="Texture" id=2]
@@ -147,8 +147,32 @@ tracks/0/keys = {
 "values": [ 0.0, 0.5, 1.0, 0.5, 1.0, 0.5, 0.0 ]
 }
 
+[sub_resource type="CanvasItemMaterial" id=27]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="Gradient" id=29]
+offsets = PoolRealArray( 0.534836, 0.989754 )
+colors = PoolColorArray( 0.580392, 0.0588235, 0, 1, 0.14902, 0.0352941, 0.156863, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=30]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
 [sub_resource type="Gradient" id=25]
-offsets = PoolRealArray( 0.162562, 0.694581, 1 )
+offsets = PoolRealArray( 0.393443, 0.993852, 1 )
 colors = PoolColorArray( 0.580392, 0.0588235, 0, 1, 0.14902, 0.0352941, 0.156863, 1, 0, 0, 0, 1 )
 
 [node name="EnemyUnit" type="KinematicBody2D" groups=["EnemyUnit"]]
@@ -171,7 +195,6 @@ material = SubResource( 24 )
 rotation = 1.5708
 frames = SubResource( 6 )
 animation = "creep0"
-frame = 2
 playing = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -181,23 +204,47 @@ anims/RESET = SubResource( 22 )
 anims/damage = SubResource( 23 )
 
 [node name="DeathEffect" type="CPUParticles2D" parent="."]
+material = SubResource( 27 )
+use_parent_material = true
 emitting = false
-amount = 15
+amount = 5
 lifetime = 0.5
 one_shot = true
-explosiveness = 0.5
-texture = ExtResource( 4 )
+explosiveness = 0.75
+texture = SubResource( 26 )
 direction = Vector2( 0, 0 )
 spread = 180.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 200.0
+initial_velocity = 150.0
 initial_velocity_random = 0.3
 linear_accel = -500.0
 linear_accel_random = 0.1
 angle = 720.0
 angle_random = 1.0
-color = Color( 1, 0, 0, 1 )
+color_ramp = SubResource( 29 )
+anim_offset = 1.0
+
+[node name="DeathEffect2" type="CPUParticles2D" parent="."]
+material = SubResource( 30 )
+emitting = false
+amount = 20
+lifetime = 0.33
+one_shot = true
+explosiveness = 0.75
+texture = SubResource( 28 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.3
+linear_accel = -500.0
+linear_accel_random = 0.1
+angle = 720.0
+angle_random = 1.0
+scale_amount = 0.1
+scale_amount_random = 0.2
 color_ramp = SubResource( 25 )
+anim_offset = 1.0
 
 [node name="CleanupTimer" type="Timer" parent="."]
 one_shot = true

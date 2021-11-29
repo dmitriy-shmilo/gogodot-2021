@@ -52,6 +52,7 @@ onready var _attack_timer: Timer = $"AttackTimer"
 onready var _cleanup_timer: Timer = $"CleanupTimer"
 onready var _animation_player: AnimationPlayer = $"AnimationPlayer"
 onready var _death_effect: CPUParticles2D = $"DeathEffect"
+onready var _death_effect2: CPUParticles2D = $"DeathEffect2"
 
 var _variant: EnemyUnitVariant = VARIANT_DISTRIBUTION[0]
 var _velocity = Vector2.ZERO
@@ -170,6 +171,7 @@ func _move_to_state(state: int) -> void:
 			_animated_sprite.modulate = Color(0.3, 0.3, 0.3)
 			if Settings.particles:
 				_death_effect.restart()
+				_death_effect2.restart()
 			emit_signal("unit_killed", self, _points[_target_point_index])
 			_cleanup_timer.start()
 		_:

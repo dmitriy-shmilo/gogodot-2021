@@ -19,12 +19,20 @@ onready var _illustrations = [
 	$"Illustrations/Illustration5",
 	$"Illustrations/Illustration6",
 ]
+onready var _generator_particles = [
+	$"Illustrations/Illustration4/BrokenGenerator/CPUParticles2D",
+	$"Illustrations/Illustration4/BrokenGenerator2/CPUParticles2D",
+	$"Illustrations/Illustration4/BrokenGenerator3/CPUParticles2D"
+]
 onready var _dialog_text_label: RichTextLabel = $"DialogPanel/DialogTextLabel"
 var _current_message_index = -1
 
 func _ready() -> void:
 	_advance_dialog()
-	pass
+	if Settings.particles:
+		for p in _generator_particles:
+			p.emitting = true
+			p.visible = true
 
 
 func _start_game() -> void:

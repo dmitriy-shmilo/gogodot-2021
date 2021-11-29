@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://intro_screen/intro_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/generator.png" type="Texture" id=12]
 [ext_resource path="res://ui/energy_bar.tres" type="Theme" id=13]
 [ext_resource path="res://ui/health_bar.tres" type="Theme" id=14]
+[ext_resource path="res://assets/particles.png" type="Texture" id=15]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
@@ -70,6 +71,16 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 15 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0, 0.237624 ), 0.0, 0.0, 0, 0, Vector2( 0.889648, 0.719606 ), -0.646628, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=25]
+colors = PoolColorArray( 0, 0, 0, 0.933333, 0.901961, 0.92549, 0.921569, 0.439216 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
@@ -196,7 +207,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 13 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Cannon2" type="Node2D" parent="Illustrations/Illustration3"]
@@ -217,7 +228,6 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
-frame = 2
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration3"]
@@ -238,6 +248,7 @@ region_rect = Rect2( 64, 0, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 15 )
+frame = 1
 playing = true
 
 [node name="Glasses" type="Sprite" parent="Illustrations/Illustration3"]
@@ -258,7 +269,6 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 8 )
 
 [node name="Illustration4" type="Node2D" parent="Illustrations"]
-visible = false
 
 [node name="Generator" type="Sprite" parent="Illustrations/Illustration4"]
 position = Vector2( 191.859, 123.433 )
@@ -275,6 +285,24 @@ texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Illustrations/Illustration4/BrokenGenerator"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 23 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 24 )
+color_ramp = SubResource( 25 )
+
 [node name="BrokenGenerator2" type="Sprite" parent="Illustrations/Illustration4"]
 modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
 position = Vector2( 207.123, 88.7828 )
@@ -283,6 +311,24 @@ texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Illustrations/Illustration4/BrokenGenerator2"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 23 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 24 )
+color_ramp = SubResource( 25 )
+
 [node name="BrokenGenerator3" type="Sprite" parent="Illustrations/Illustration4"]
 modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
 position = Vector2( 251.823, 106.287 )
@@ -290,6 +336,24 @@ rotation = 0.394964
 texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 48, 48 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Illustrations/Illustration4/BrokenGenerator3"]
+visible = false
+emitting = false
+lifetime = 2.0
+preprocess = 10.0
+texture = SubResource( 23 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 15.0
+linear_accel = -2.0
+damping = 30.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 24 )
+color_ramp = SubResource( 25 )
 
 [node name="Hq" type="Sprite" parent="Illustrations/Illustration4"]
 position = Vector2( 361.376, 156.333 )
@@ -340,7 +404,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration5"]
@@ -362,6 +426,7 @@ region_rect = Rect2( 64, 0, 64, 64 )
 [node name="PowerIndicator" type="AnimatedSprite" parent="Illustrations/Illustration5/Cannon3"]
 position = Vector2( -16.3396, -25.2825 )
 frames = SubResource( 21 )
+frame = 1
 playing = true
 
 [node name="Illustration6" type="Node2D" parent="Illustrations"]
@@ -427,7 +492,7 @@ __meta__ = {
 
 [node name="Portrait" type="AnimatedSprite" parent="PortraitPanel"]
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 offset = Vector2( 35, 33 )
 
