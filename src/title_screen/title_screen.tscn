@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/title.png" type="Texture" id=1]
 [ext_resource path="res://title_screen/title_screen.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/pen.png" type="Texture" id=5]
 [ext_resource path="res://assets/mouse.png" type="Texture" id=6]
 [ext_resource path="res://assets/glasses.png" type="Texture" id=7]
+[ext_resource path="res://title_screen/title_enemies.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -82,9 +83,31 @@ texture = ExtResource( 6 )
 
 [node name="Pen" type="Sprite" parent="."]
 position = Vector2( 141.106, 290.927 )
-rotation = -0.780919
+rotation = 0.501826
 scale = Vector2( 0.143621, 0.143621 )
 texture = ExtResource( 5 )
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="EnemyPath" type="Line2D" parent="Enemies"]
+visible = false
+points = PoolVector2Array( 48.601, 382.887, 129.342, 260.917, 101.9, 124.005, 206.895, 36.7872, 329.429, 34.1026, 379.449, -52.2332, 690.784, -33.7347, 687.084, 256.588, 675.892, 395.208, 528.27, 409.267, 187.661, -91.7103 )
+
+[node name="Timer" type="Timer" parent="Enemies"]
+wait_time = 1.5
+autostart = true
+
+[node name="Enemies2" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="EnemyPath" type="Line2D" parent="Enemies2"]
+visible = false
+points = PoolVector2Array( 725.099, 295.387, 496.427, 164.286, 94.0267, 148.328, -44.6912, 237.37, -142.356, 5.3922, 157.574, -134.263, 312.213, -55.7783, 301.072, 379.649 )
+
+[node name="Timer" type="Timer" parent="Enemies2"]
+wait_time = 1.5
+autostart = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -169,6 +192,8 @@ anims/RESET = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 anims/fade_out = SubResource( 3 )
 
+[connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Enemies2/Timer" to="Enemies2" method="_on_Timer_timeout"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
