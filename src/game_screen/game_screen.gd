@@ -62,6 +62,9 @@ func _set_soundtrack_volume(volume: float) -> void:
 
 
 func _level_energy_changed(_level, current_energy, total_energy):
+	if current_energy < 0:
+		_gui.shake_energy_bar()
+		return
 	_gui.set_energy(current_energy, total_energy)
 
 

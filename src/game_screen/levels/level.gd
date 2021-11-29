@@ -42,11 +42,12 @@ func get_start_position() -> Vector2:
 
 func _tower_activation_requested(tower, active) -> void:
 	if active:
-		# TODO: else shake power bar
 		if current_energy >= tower.variant.energy_cost:
 			current_energy -= tower.variant.energy_cost
 			tower.toggle_active(true)
 			emit_signal("energy_changed", self, current_energy, total_energy)
+		else:
+			emit_signal("energy_changed", self, -1, total_energy)
 	else:
 		current_energy += tower.variant.energy_cost
 		tower.toggle_active(false)
