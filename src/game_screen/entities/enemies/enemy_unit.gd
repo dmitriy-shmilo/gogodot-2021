@@ -3,7 +3,7 @@ class_name EnemyUnit
 
 const FINISH_RADIUS = 50
 const FINISH_DIAMETER = FINISH_RADIUS * 2
-const CORE_DAMAGE = 5
+const CORE_DAMAGE = 4
 const VARIANT_DISTRIBUTION = [
 	
 	# easy worms

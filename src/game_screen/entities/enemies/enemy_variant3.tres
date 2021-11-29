@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 move_speed = 35.0
-max_hitpoints = 45.0
+max_hitpoints = 30.0
 sprite_index = 3
 attack_rate = 0.5

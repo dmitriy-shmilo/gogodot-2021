@@ -13,7 +13,7 @@ var _core: PlayerCore
 var _points: PoolVector2Array
 var _enemy_scene = preload("res://game_screen/entities/enemies/enemy_unit.tscn")
 var _current_deaths = 0
-var _current_spawn_rate = 0.3
+var _current_spawn_rate = 0.6
 
 onready var _spawner_sprite = $"SpawnerSprite"
 onready var _debug_line = $"Node/DebugLine"

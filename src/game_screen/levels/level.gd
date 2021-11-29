@@ -5,8 +5,8 @@ signal energy_changed(level, amount, total)
 signal score_changed(level, amount, total)
 signal health_changed(level, amount, total)
 
-export(float) var total_energy = 5
-export(float) var current_energy = 5
+export(float) var total_energy = 6
+export(float) var current_energy = 6
 
 onready var _core: PlayerCore = $"PlayerCore"
 onready var _tilemap: TileMapMesh = $"Obstacles"

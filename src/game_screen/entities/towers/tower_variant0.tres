@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-damage = 25.0
+damage = 6.0
 attack_rate = 5.0
 energy_cost = 1.0
 attack_range = 120.0
