@@ -21,6 +21,19 @@ func _ready() -> void:
 	_towers = get_tree().get_nodes_in_group("PlayerTower")
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action("shut_down"):
+		var had_effect = false
+		for tower in _towers:
+			had_effect = had_effect or tower._state != PlayerTower.TowerState.INACTIVE
+			tower.toggle_active(false)
+			current_energy = total_energy
+			emit_signal("energy_changed", self, current_energy, total_energy)
+
+		if had_effect:
+			_power_off_player.play()
+		
+
 func setup() -> void:
 	for tower in _towers:
 		tower.connect("activation_requested", self, "_tower_activation_requested")
