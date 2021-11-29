@@ -1,9 +1,9 @@
 extends Node2D
 
 const SOUNDTRACK_STREAMS = [
-	preload("res://assets/music1.mp3"),
-	preload("res://assets/music2.mp3"),
-	preload("res://assets/music3.mp3")
+	preload("res://assets/music1.ogg"),
+	preload("res://assets/music2.ogg"),
+	preload("res://assets/music3.ogg")
 ]
 const PAUSE_VOLUME_MOD = -10.0
 
