@@ -10,6 +10,7 @@ func _ready() -> void:
 
 	_quit_button.visible = not OS.has_feature("HTML5")
 	Settings.load_settings()
+	UserSaveData.load_data()
 	if not MenuMusic.playing:
 		MenuMusic.play()
 
