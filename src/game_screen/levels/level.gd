@@ -10,6 +10,9 @@ export(float) var current_energy = 5
 
 onready var _core: PlayerCore = $"PlayerCore"
 onready var _tilemap: TileMapMesh = $"Obstacles"
+onready var _power_on_player: AudioStreamPlayer = $"PowerOnPlayer"
+onready var _power_off_player: AudioStreamPlayer = $"PowerOffPlayer"
+onready var _warning_player: AudioStreamPlayer = $"WarningPlayer"
 
 var _towers: Array
 var _score: float
@@ -46,12 +49,15 @@ func _tower_activation_requested(tower, active) -> void:
 			current_energy -= tower.variant.energy_cost
 			tower.toggle_active(true)
 			emit_signal("energy_changed", self, current_energy, total_energy)
+			_power_on_player.play()
 		else:
 			emit_signal("energy_changed", self, -1, total_energy)
+			_warning_player.play()
 	else:
 		current_energy += tower.variant.energy_cost
 		tower.toggle_active(false)
 		emit_signal("energy_changed", self, current_energy, total_energy)
+		_power_off_player.play()
 
 
 func _spawner_core_damaged(_unit, damage):
