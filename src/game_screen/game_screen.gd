@@ -95,4 +95,5 @@ func _on_ContinueButton_pressed():
 
 func _on_SoundtrackPlayer_finished() -> void:
 	_current_soundtrack = (_current_soundtrack + 1) % SOUNDTRACK_STREAMS.size()
-	_soundtrack_player.play(SOUNDTRACK_STREAMS[_current_soundtrack])
+	_soundtrack_player.stream = SOUNDTRACK_STREAMS[_current_soundtrack]
+	_soundtrack_player.play()
