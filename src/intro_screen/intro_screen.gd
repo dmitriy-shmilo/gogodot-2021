@@ -56,10 +56,12 @@ func _advance_dialog() -> void:
 	_dialog_text_label.bbcode_text = tr(MESSAGES[_current_message_index])
 
 
-func _on_DialogTextLabel_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		_advance_dialog()
-
-
 func _on_SkipButton_pressed() -> void:
 	_start_game()
+
+
+func _on_IntroScene_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton \
+		and event.pressed \
+		and event.button_index == BUTTON_LEFT:
+		_advance_dialog()

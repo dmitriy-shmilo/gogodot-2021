@@ -207,7 +207,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 13 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="Cannon2" type="Node2D" parent="Illustrations/Illustration3"]
@@ -228,6 +228,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
+frame = 8
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration3"]
@@ -404,7 +405,6 @@ region_rect = Rect2( 64, 64, 64, 64 )
 position = Vector2( 1.01756, 53.9307 )
 rotation = 1.5708
 frames = SubResource( 14 )
-frame = 3
 playing = true
 
 [node name="Cannon3" type="Node2D" parent="Illustrations/Illustration5"]
@@ -492,7 +492,6 @@ __meta__ = {
 
 [node name="Portrait" type="AnimatedSprite" parent="PortraitPanel"]
 frames = SubResource( 5 )
-frame = 1
 playing = true
 offset = Vector2( 35, 33 )
 
@@ -529,6 +528,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="." to="." method="_on_IntroScene_gui_input"]
 [connection signal="timeout" from="Illustrations/Illustration2/Enemies2/Timer" to="Illustrations/Illustration2/Enemies2" method="_on_Timer_timeout"]
-[connection signal="gui_input" from="DialogPanel/DialogTextLabel" to="." method="_on_DialogTextLabel_gui_input"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_SkipButton_pressed"]
