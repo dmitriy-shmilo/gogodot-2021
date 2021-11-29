@@ -8,7 +8,7 @@ onready var _animation_player: AnimationPlayer = $"AnimationPlayer"
 
 func set_energy(current, total) -> void:
 	_energy_bar.max_value = total
-	_energy_bar.value = current
+	_energy_bar.set_value(current)
 
 
 func set_score(total, amount = 0) -> void:
@@ -18,7 +18,7 @@ func set_score(total, amount = 0) -> void:
 
 func set_health(total, current):
 	_health_bar.max_value = total
-	_health_bar.value = current
+	_health_bar.set_value(current)
 
 
 func shake_energy_bar() -> void:
