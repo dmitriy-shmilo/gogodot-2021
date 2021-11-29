@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://game_screen/entities/enemy_spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_screen/entities/player_core.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game_screen/levels/level.gd" type="Script" id=3]
 [ext_resource path="res://assets/remote.png" type="Texture" id=4]
-[ext_resource path="res://game_screen/entities/player_core.gd" type="Script" id=5]
 [ext_resource path="res://game_screen/entities/towers/player_tower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game_screen/levels/tiles/walls.tres" type="TileSet" id=7]
 [ext_resource path="res://game_screen/levels/tile_map.gd" type="Script" id=8]
@@ -39,7 +38,6 @@ script = ExtResource( 8 )
 
 [node name="PlayerCore" parent="." instance=ExtResource( 2 )]
 position = Vector2( 452.312, 141.848 )
-script = ExtResource( 5 )
 
 [node name="Towers" type="Node2D" parent="."]
 
