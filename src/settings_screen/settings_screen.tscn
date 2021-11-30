@@ -53,6 +53,7 @@ margin_right = 537.122
 margin_bottom = 253.621
 
 [node name="SoundSettings" type="Control" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.38271
@@ -137,65 +138,36 @@ rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 2
 
 [node name="Video" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.38271
-margin_top = 30.1324
-margin_right = -5.88116
-margin_bottom = -6.50681
+margin_top = 30.1325
+margin_right = -5.88115
+margin_bottom = -6.5068
 
 [node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Video"]
-margin_right = 517.229
-margin_bottom = 210.854
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 209.0
+margin_top = 79.0
+margin_right = 307.0
+margin_bottom = 131.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fullscreen" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container"]
-margin_top = 75.0
-margin_right = 517.0
-margin_bottom = 103.0
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container/Fullscreen"]
-margin_left = 178.0
-margin_right = 256.0
-margin_bottom = 28.0
-size_flags_horizontal = 10
-size_flags_vertical = 1
+[node name="FullscreenCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container"]
+margin_right = 98.0
+margin_bottom = 16.0
 text = "ui_fullscreen"
 
-[node name="FullscreenCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container/Fullscreen"]
-margin_left = 260.0
-margin_right = 460.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 200, 0 )
-size_flags_horizontal = 2
-
-[node name="Particles" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container"]
-margin_top = 107.0
-margin_right = 517.0
-margin_bottom = 135.0
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container/Particles"]
-margin_left = 184.0
-margin_right = 256.0
-margin_bottom = 28.0
-size_flags_horizontal = 10
-size_flags_vertical = 1
+[node name="ParticlesCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container"]
+margin_top = 36.0
+margin_right = 98.0
+margin_bottom = 52.0
 text = "ui_particles"
-
-[node name="ParticlesCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/Video/Container/Particles"]
-margin_left = 260.0
-margin_right = 460.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 200, 0 )
-size_flags_horizontal = 2
 
 [node name="KeyBindings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
 visible = false
@@ -218,14 +190,14 @@ custom_constants/hseparation = 10
 columns = 4
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
-margin_left = 237.0
+margin_left = 228.0
 margin_top = 294.0
-margin_right = 305.0
+margin_right = 314.0
 margin_bottom = 319.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
-text = "Back"
+text = "ui_back"
 
 [node name="KeyBindingPopup" type="PopupPanel" parent="."]
 anchor_left = 0.5
@@ -295,8 +267,8 @@ text = "Clear Binding"
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
-[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/Video/Container/Fullscreen/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
-[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/Video/Container/Particles/ParticlesCheckbox" to="." method="_on_ParticlesCheckbox_toggled"]
+[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/Video/Container/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/Video/Container/ParticlesCheckbox" to="." method="_on_ParticlesCheckbox_toggled"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="action_remapped" from="KeyBindingPopup" to="." method="_on_KeyBindingPopup_action_remapped"]
 [connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_KeybindingCancelButton_pressed"]

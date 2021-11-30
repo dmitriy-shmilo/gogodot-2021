@@ -6,12 +6,12 @@ const KeyBindingLabelScene = preload("res://settings_screen/keybinding_label.tsc
 
 onready var _tab_container = $"VBoxContainer/PanelContainer/TabContainer"
 onready var _keybindings_grid = $"VBoxContainer/PanelContainer/TabContainer/KeyBindings/GridContainer"
-onready var _keybinding_popup = $KeyBindingPopup
+onready var _keybinding_popup = $"KeyBindingPopup"
 onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider"
 onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider"
 onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider"
-onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/Fullscreen/FullscreenCheckbox"
-onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/Particles/ParticlesCheckbox"
+onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/FullscreenCheckbox"
+onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/Video/Container/ParticlesCheckbox"
 
 var _current_binding_button: KeyBindingButton = null
 
@@ -103,3 +103,13 @@ func _on_FullscreenCheckbox_toggled(button_pressed: bool) -> void:
 
 func _on_ParticlesCheckbox_toggled(button_pressed: bool) -> void:
 	Settings.particles = button_pressed
+
+
+func _on_ParticlesLabel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouse and event.is_pressed():
+		_particles_checkbox.pressed = !_particles_checkbox.pressed
+
+
+func _on_FullscreenLabel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouse and event.is_pressed():
+		_fullscreen_checkbox.pressed = !_fullscreen_checkbox.pressed
