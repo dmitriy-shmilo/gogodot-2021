@@ -1,3 +1,14 @@
+# Donut Defense #
+
+A simple tower defense game made for [Go Godot 2 Jam](https://itch.io/jam/go-godot-jam-2). Download or play on [itch](https://dmitriy-shmilo.itch.io/donut-defense).
+
+<p style="float: left">
+    <img src="screenshots/screenshot1.png" width="320"/>
+    <img src="screenshots/screenshot2.png" width="320"/>
+    <img src="screenshots/screenshot3.png" width="320"/>
+    <img src="screenshots/screenshot4.png" width="320"/>
+</p>
+
 # Credits #
 
 ## Font ##
